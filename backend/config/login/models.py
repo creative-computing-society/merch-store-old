@@ -3,8 +3,20 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from .managers import UserManager
 
+
+USER_POSITION_CHOICES = [
+    ('MB','Member'),
+    ('CR','Core'),
+    ('JS','Joint Secretary'),
+    ('GS','General Secretary'),
+    
+]
+
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
+    phone_no = models.CharField(max_length=15)
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=2, choices=USER_POSITION_CHOICES, default='MB')
     
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
