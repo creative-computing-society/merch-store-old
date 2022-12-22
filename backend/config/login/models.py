@@ -9,13 +9,12 @@ USER_POSITION_CHOICES = [
     ('CR','Core'),
     ('JS','Joint Secretary'),
     ('GS','General Secretary'),
-    
 ]
 
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    phone_no = models.CharField(max_length=15)
-    name = models.CharField(max_length=100)
+    phone_no = models.CharField(max_length=15, null=True, default=None, blank=True)
+    name = models.CharField(max_length=100, null=True, default=None, blank=True)
     position = models.CharField(max_length=2, choices=USER_POSITION_CHOICES, default='MB')
     
     is_active = models.BooleanField(default=True)
