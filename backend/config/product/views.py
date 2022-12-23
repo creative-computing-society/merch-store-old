@@ -4,17 +4,41 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 from .models import Product, CartItem
+from .serializers import ProductSerializer, CartItemSerializer
+
 # Create your views here.
 
 
+class AllProducts(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        queryset = Product.objects.filter(for_user_positions__contains=[user.position])
+        serializer = ProductSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class Product(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, product_id):
+        user = request.user
+        product = Product.objects.filter(id=product_id).first()
+        if product is None or user.position not in product.for_user_positions:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class AddToCart(APIView):
-    permission_classes = [IsAuthenticated, ]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         product_id = request.data.get('product_id')
         product = Product.objects.filter(id=product_id)
         user = request.user
-        if product is None or CartItem.objects.filter(user=user, product=product).exists():
+        if product is None or user.position not in product.for_user_positions or CartItem.objects.filter(user=user, product=product).exists():
             return Response(status=status.HTTP_400_BAD_REQUEST)
         printing_name = request.data.get('printing_name')
         size = request.data.get('size')
@@ -22,4 +46,25 @@ class AddToCart(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         cart_item = CartItem(product=product, user=user, printing_name=printing_name, size=size)
         cart_item.save()
+        return Response(status=status.HTTP_200_OK)
+
+
+class ViewCart(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        queryset = CartItem.objects.filter(user=request.user)
+        serializer = CartItemSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class RemoveFromCart(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        cart_item_id = request.data.get('cart_item_id')
+        cart_item = CartItem.objects.filter(id=cart_item_id)
+        if cart_item is None or cart_item.user!=request.user:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        cart_item.delete()
         return Response(status=status.HTTP_200_OK)
