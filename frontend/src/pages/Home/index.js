@@ -1,7 +1,13 @@
+import React from "react";
+import CcsBulb from "./Components/ccsbulb";
+
+
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <div>
+      <CcsBulb/>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
