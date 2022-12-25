@@ -1,0 +1,38 @@
+.swiper {
+    width: 80%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+  }
+  
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    /* width: 300px;
+    height: 300px; */
+  }
+  
+  .swiperSlide img {
+    display: block;
+    width: 100%;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(215 233 255);
+  }
+  
+  @media (max-width: 768px) {
+    /* .swiper {
+      width: 90%;
+    } */
+  }
+  
+  /* @media screen and (min-width: 640px) {
+    .swiper {
+      width: 640px;
+    }
+  } */
+  

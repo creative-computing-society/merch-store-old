@@ -1,6 +1,11 @@
+import React from "react"
+import Carousel from "./Components/Carousel"
+
 function Products() {
     return (
-      <div>Products</div>
+      <>
+        <Carousel />
+      </>
     )
   }
   
