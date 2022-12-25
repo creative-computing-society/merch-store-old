@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import { useNavigate } from "react-router-dom";
+import Fade from 'react-reveal/Fade';
 
 const url = "";
 
@@ -141,8 +142,12 @@ function Loginbox() {
                     </div>
                 </div>
                 <div className={styles.merch}>
+                    <Fade bottom>
                     <div className={styles.heading2}>MERCHANDISE</div>
+                    </Fade>
+                    <Fade top>
                     <div className={styles.heading3}>STORE</div>
+                    </Fade>
                 </div>
             </div>
         </div>

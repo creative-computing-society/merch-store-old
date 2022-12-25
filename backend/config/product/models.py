@@ -10,6 +10,7 @@ class Product(models.Model):
     
     is_name_required = models.BooleanField(default=False)
     is_size_required = models.BooleanField(default=False)
+    accept_orders = models.BooleanField(default=True)
     
     description = models.TextField(null=True, blank=True, default=None)
     
