@@ -12,8 +12,8 @@ class ProductSerializer(serializers.ModelSerializer):
         user  = self.context.get('user')
         if user is None:
             return ""
-        # if not obj.accept_orders:
-        #     return "forbidden"
+        if not obj.accept_orders:
+            return "forbidden"
         if OrderItem.objects.filter(product=obj, order__user=user).exists():
             return "ordered"
         if CartItem.objects.filter(product=obj, user=user).exists():
