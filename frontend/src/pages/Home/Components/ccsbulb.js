@@ -16,19 +16,14 @@ function CcsBulb() {
       <div className={styles.contentSection}>
         <Navbar />
         <div className={styles.logo}>
-          <Flip top>
-            <img src={ccsbulb} alt="CCS Image" style={{
-              height: 410,
-              width: 355,
-              position: "absolute"
-            }} />
-          </ Flip>
+          <Zoom>
+            <img src={ccsbulb} alt="whyccs6" className={styles.photo} />
+          </ Zoom>
         </div>
         <div className={styles.merch}>
           <Fade bottom>
             <div className={styles.heading2}>MERCHANDISE</div>
-          </Fade>
-          <Fade top>
+          
             <div className={styles.heading3}>STORE</div>
           </Fade>
 
