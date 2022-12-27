@@ -6,6 +6,7 @@ import LoginPage from "./pages/Login/loginpage.js"
 import Home from "./pages/Home/index.js"
 import Products from "./pages/Products";
 import Navbar from "./pages/Navbar/Navbar";
+import Product from "./pages/Product";
 // import Home from "./pages/Home";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/" element={<Home />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/products" element={<Products />}></Route>
+        <Route path="/product/:id" element={<Product />}></Route>
       </Routes>
     </Router>
     </div>

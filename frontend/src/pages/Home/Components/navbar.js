@@ -3,10 +3,10 @@ import styles from "../Style/navbar.module.css"
 function Navbar() {
     return (
         <div className={styles.navbar}>
-            <a class="active" href="#">HOME</a>
-            <a href="#about">PRODUCTS</a>
-            <a href="#contact">CART</a>
-            <a href="#contact">PROFILE</a>
+            <a href="">HOME</a>
+            <a href="products">PRODUCTS</a>
+            <a href="cart">CART</a>
+            <a href="profile">PROFILE</a>
         </div>
     );
 }
