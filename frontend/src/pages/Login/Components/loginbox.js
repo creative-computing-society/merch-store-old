@@ -94,14 +94,8 @@ function Loginbox() {
         <div className={styles.logincontainer} id="whyccsid">
             <div className={styles.contentSection}>
                 <div className={styles.logo}>
-                    <img src={logo} alt="CCS Image" style={{
-                        resizeMode: "cover",
-                        height: 100,
-                        width: 200,
-                        paddingLeft: 35,
-                        paddingTop: 35,
-                        position: "absolute"
-                    }} />
+        
+                    <img src={logo} alt="CCS Image" className={styles.photo} />
                 </div>
 
                 <div className={styles.heading1}>LOGIN</div>
