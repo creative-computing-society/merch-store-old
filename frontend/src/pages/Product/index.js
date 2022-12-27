@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from "axios"
 import ProductCarousel from './Components/ProductCarousel'
 import ProductDetails from './Components/ProductDetails'
-
+import Navbar from "../Navbar/Navbar"
 
 function Product() {
 
@@ -21,6 +21,7 @@ function Product() {
 
   return (
     <>
+        <Navbar />
         <img src="https://picsum.photos/400/500" alt="" />
         <ProductCarousel />
         <ProductDetails details={details} />
