@@ -1,12 +1,11 @@
 import axios from 'axios';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Select from "react-select"
-
-
-
+import styles from "../Style/product.module.css"
 
 
 function ProductDetails(props) {
+
     const [name, setName] = useState();
     const [size, setSize] = useState();
 
@@ -22,11 +21,23 @@ function ProductDetails(props) {
     }
 
     const addToCart = async () => {
-        axios.post()
+        const token = localStorage.getItem("token")
+        
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+
+        const data = {
+            "product_id": props.details.id,
+        }
+        
+        axios.post("https://merchapi.ccstiet.com/", )
     }
 
     return (
-        <>
+        <div className={styles.container}>
             <div>
                 <div>{props.details.name}</div>
                 <div>{props.details.price}</div>
@@ -52,7 +63,7 @@ function ProductDetails(props) {
             }
 
             <button onClick={addToCart}>Add to Cart</button>
-        </>
+        </div>
     )
 }
 

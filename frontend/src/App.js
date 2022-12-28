@@ -7,6 +7,7 @@ import Home from "./pages/Home/index.js"
 import Products from "./pages/Products";
 import Navbar from "./pages/Navbar/Navbar";
 import Product from "./pages/Product";
+import Cart from "./pages/Cart";
 // import Home from "./pages/Home";
 
 function App() {
@@ -14,16 +15,13 @@ function App() {
 
   return (
     <div className="App">
-    {/* <LoginPage/> */}
-    {/* <Home/> */}
-    {/* <Navbar /> */}
-    {/* <Products /> */}
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/products" element={<Products />}></Route>
-        <Route path="/product/:id" element={<Product />}></Route>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
     </div>

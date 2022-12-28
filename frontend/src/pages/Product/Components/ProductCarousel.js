@@ -2,7 +2,9 @@ import React from 'react'
 
 function ProductCarousel() {
   return (
-    <div>ProductCarousel</div>
+    <>
+      <img src="https://picsum.photos/400/500" alt="" />
+    </>
   )
 }
 
