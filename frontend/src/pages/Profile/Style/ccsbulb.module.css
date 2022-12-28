@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
+
+.container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../Assets/MerchStore_bg.png");
+  min-height: 100vh;
+}
+
+.subcontainer {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: 500;
+  padding-top: 1rem;
+  color: #fff;
+}
+
+.order {
+  background-color: #fff;
+  opacity: 0.4;
+  border-radius: 30px;
+  padding-top: 0.6rem;
+  color: black;
+  font-size: 20px;
+  width: 400px;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0.7rem;
+}
+
+.parent {
+  margin: 0rem;
+  padding: 1rem 1rem;
+  text-align: center;
+}
+
+.child {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.button {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  border-radius: 2rem;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  background: #36BBBD;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  border: 0rem;
+}
+
+.button:hover {
+  background: #36BBBD;
+  border-radius: 30px;
+  border-width: 0px;
+  transform: scale(1.06);
+  transition-duration: 0.4s;
+}
+
+@media (max-width: 768px) {
+
+  .order {
+    width: 200px;
+    font-size: 15px;
+  }
+
+  .button {
+    font-size: 15px;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+  }
+  .subcontainer {
+    font-size: 15px;
+    
+  }
+}

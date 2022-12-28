@@ -7,6 +7,7 @@ import Home from "./pages/Home/index.js"
 import Products from "./pages/Products";
 import Navbar from "./pages/Navbar/Navbar";
 import Product from "./pages/Product";
+import Profile from "./pages/Profile/index.js"
 // import Home from "./pages/Home";
 
 function App() {
@@ -20,10 +21,11 @@ function App() {
     {/* <Products /> */}
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route exact path="/" element={<LoginPage />}></Route>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/product/:id" element={<Product />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
     </Router>
     </div>

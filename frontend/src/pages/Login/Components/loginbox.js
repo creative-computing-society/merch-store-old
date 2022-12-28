@@ -14,7 +14,7 @@ import Fade from 'react-reveal/Fade';
 const url = "";
 
 function Loginbox() {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     const [email, setEmail] = useState("");
@@ -63,7 +63,7 @@ function Loginbox() {
                                 </button>
                             );
 
-                            // navigate("/home")
+                            navigate("/home")
                         }
                     }
                 })

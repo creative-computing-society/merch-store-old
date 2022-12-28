@@ -5,18 +5,16 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("../Assets/MerchStore_bg.png");
-
+  min-height: 100vh;
 }
 
 .logo {
   margin-bottom: 0px;
-  position: "absolute";
 }
 
 .photo {
   height: 100px;
   width: 200px;
-  position: "absolute";
   padding-left: 2rem;
   padding-top: 2rem;
   ;
