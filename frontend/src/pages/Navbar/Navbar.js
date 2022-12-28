@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./Style/navbar.module.css"
+import logo from "./Assets/logo.png"
 function Navbar() {
     return (
         <div className={styles.navbar}>
-            <a href="">HOME</a>
+            <a href="/">HOME</a>
             <a href="products">PRODUCTS</a>
             <a href="cart">CART</a>
             <a href="profile">PROFILE</a>

@@ -20,6 +20,15 @@
   color: #000;
 
 }
+.logo {
+  margin-bottom: 0px;
+}
+
+.photo {
+  height: 80px;
+  width: 160px;
+  text-align: left;
+}
 
 h2 {
   text-align: center;
