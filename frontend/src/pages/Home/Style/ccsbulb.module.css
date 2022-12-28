@@ -3,6 +3,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("../Assets/MerchStore_bg.png");
+  min-height: 100vh;
 }
 
 .logo {

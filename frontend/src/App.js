@@ -8,6 +8,7 @@ import Products from "./pages/Products";
 import Navbar from "./pages/Navbar/Navbar";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile/index.js"
 // import Home from "./pages/Home";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />}></Route>
       </Routes>
     </Router>
     </div>
