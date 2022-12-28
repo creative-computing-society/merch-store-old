@@ -5,7 +5,9 @@ import ProductCarousel from './Components/ProductCarousel'
 import ProductDetails from './Components/ProductDetails'
 import Navbar from "../Navbar/Navbar"
 import styles from "./Style/product.module.css"
-import logo from "./Assets/logo.png"
+import logo from "../Navbar/Assets/logo.png"
+
+import { api_url } from '../../config'
 
 function Product() {
   const params = useParams()
@@ -19,17 +21,18 @@ function Product() {
 
       const config = {
         headers: {
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Token ${token}`
         }
-
       }
 
-      const res = await axios.get(`https://merchapi.ccstiet.com/product/${product_id}`, config)
-      setDetails(res)
+      const res = await axios.get(`${api_url}product/${product_id}`, config)
+      setDetails(res.data)
     }
 
     fetchData();
   }, [])
+
+  // useEffect(() => {console.log(details)}, [details])
 
 
   return (

@@ -37,7 +37,11 @@ function Carousel() {
         return (
             <SwiperSlide className={styles.swiperSlide}>
               <Link to={`/product/${product.id}`}>
-                <img src={product.image_url1} alt={product.name} className={styles.carouselImage} />
+                <div>
+                  <div><img src={product.image_url1} alt={product.name} className={styles.carouselImage} /></div>
+                  <div>{product.name}</div>
+                  <div>₹{product.price}</div>
+                </div>
               </Link>
             </SwiperSlide>
         )

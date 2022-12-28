@@ -1,7 +1,7 @@
 import React from "react"
 import Carousel from "./Components/Carousel"
 import Navbar from "../Navbar/Navbar"
-import logo from "./Assets/logo.png"
+import logo from "../Navbar/Assets/logo.png"
 function Products() {
   return (
     <>

@@ -22,7 +22,6 @@ function Loginbox() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
 
   const submitForm = async (e) => {
     e.preventDefault();
@@ -49,12 +48,12 @@ function Loginbox() {
           .catch((error) => {
             setLoading(false)
 
-            setMessage("Incorrect Credentials");
+            alert("Incorrect Credentials");
           });
       } catch (error) {
         setLoading(false)
 
-        setMessage("An error occurred");
+        alert("An error occurred");
       }
     } else {
       alert("Please fill in all the data");
