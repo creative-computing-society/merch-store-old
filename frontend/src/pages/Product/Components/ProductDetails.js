@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from "react-select"
 import styles from "../Style/product.module.css"
-
+import ProductCarousel from './ProductCarousel.js'
 
 function ProductDetails(props) {
 
@@ -10,10 +10,10 @@ function ProductDetails(props) {
     const [size, setSize] = useState();
 
     const options = [
-        {value: "S", label: "S"},
-        {value: "M", label: "M"},
-        {value: "L", label: "L"},
-        {value: "XL", label: "XL"},
+        { value: "S", label: "S" },
+        { value: "M", label: "M" },
+        { value: "L", label: "L" },
+        { value: "XL", label: "XL" },
     ]
 
     const nameChangeHandler = (e) => {
@@ -22,7 +22,7 @@ function ProductDetails(props) {
 
     const addToCart = async () => {
         const token = localStorage.getItem("token")
-        
+
         const config = {
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -32,37 +32,45 @@ function ProductDetails(props) {
         const data = {
             "product_id": props.details.id,
         }
-        
-        axios.post("https://merchapi.ccstiet.com/", )
+
+        axios.post("https://merchapi.ccstiet.com/",)
     }
 
     return (
         <div className={styles.container}>
-            <div>
-                <div>{props.details.name}</div>
-                <div>{props.details.price}</div>
+
+            <div className={styles.child}>
+                <ProductCarousel />
             </div>
-            {
-                props.details.is_name_required && 
-                <div>
-                    <div>NAME</div>
-                    <input 
-                        type="text" 
+            <div className={styles.child}>
+                <hr/>   
+                <div className={styles.contain}>
+                    <div className={styles.title2}>Product Details: {props.details.name}</div>
+                    <div className={styles.title2}>Price: {props.details.price}</div>
+                </div>
+                <hr/>   
+                {/* props.details.is_name_required &&  */}
+                <div className={styles.contain}>
+                    <div className={styles.title}>Enter Name</div>
+                    <input
+                        className={styles.ic}
+                        type="text"
                         onChange={nameChangeHandler}
                     />
                 </div>
-            
-            }
-            {
-                props.details.is_size_required && 
-                <div>
-                    <div>CHOOSE A SIZE</div>
-                    <Select options={options}/> 
-                </div>
-            
-            }
 
-            <button onClick={addToCart}>Add to Cart</button>
+                
+                {/* // props.details.is_size_required &&  */}
+                <div className={styles.contain}>
+                    <div className={styles.title}>Choose a Size</div>
+                    <Select options={options} />
+                </div>
+                <hr/>
+                <div className={styles.contain}>
+                <button className={styles.button} onClick={addToCart}>Add to Cart</button>
+                </div>
+                <hr/>
+            </div>
         </div>
     )
 }
