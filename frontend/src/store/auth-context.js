@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 const AuthContext = React.createContext({
     isLoggedIn: false,
@@ -32,12 +32,14 @@ export const AuthContextProvider = (props) => {
         login: loginHandler,
         logout: logoutHandler,
     }
+
+    return (
+        <AuthContext.Provider value={contextValue}>
+            {props.children}
+        </AuthContext.Provider>
+    )
+    
 }
 
-return (
-    <AuthContext.Provider value={contextValue}>
-        {props.children}
-    </AuthContext.Provider>
-)
 
 export default AuthContext;

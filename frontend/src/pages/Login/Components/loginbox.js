@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-
+import AuthContext from "../../../store/auth-context";
 import styles from "../Style/login.module.css";
 import logo from "../Assets/logo.png";
 
@@ -10,10 +10,14 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 
-const url = "";
+import { api_url } from "../../../config";
+
+const url = api_url + "auth/login/";
 
 function Loginbox() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const authCtx = useContext(AuthContext)
+  // const history = useHistory()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,21 +31,21 @@ function Loginbox() {
       setLoading(true);
 
       try {
-        axios
-          .post(url, {
+        axios.post(url, {
             email: email.trim(),
             password: password.trim(),
           })
           .then((response) => {
-            if (response.data.status == "success") {
-              const user = response.data;
-              localStorage.setItem("token", user.key);
+            if (!response.data.error) {
+              console.log(response.data)
+              authCtx.login(response.data.key)
+              navigate('/', {replace: true})
+
               setPassword("");
               setEmail("");
 
               setLoading(false)
-            }
-          })
+          }})
           .catch((error) => {
             setLoading(false)
 
@@ -75,6 +79,8 @@ function Loginbox() {
                 autoComplete="off"
                 placeholder="EMAIL"
                 className={styles.inputBox1}
+                value={email}
+                onChange={(e) => {setEmail(e.target.value)}}
               />
             </div>
             <div className={styles.inputBox}>
@@ -85,6 +91,8 @@ function Loginbox() {
                 autoComplete="off"
                 placeholder="PASSWORD"
                 className={styles.inputBox1}
+                value={password}
+                onChange={(e) => {setPassword(e.target.value)}}
               />
             </div>
 

@@ -1,8 +1,9 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper";
-
+import { Swiper, SwiperSlide} from "swiper/react";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,8 +12,46 @@ import "swiper/css/pagination";
 
 import styles from "../Style/carousel.module.css";
 
+import { api_url } from "../../../config";
+
+const url = api_url + "product/all/"
 
 function Carousel() {
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+
+    const config = {
+      headers: {
+        "Authorization": `Token ${token}`
+      }
+    }
+
+    const fetchData = async () => {
+      const res = await axios.get(url, config)
+      const data = res.data
+      console.log(data)
+      setProducts(data.map(product => {
+
+        return (
+            <SwiperSlide className={styles.swiperSlide}>
+              <Link to={`/product/${product.id}`}>
+                <img src={product.image_url1} alt={product.name} className={styles.carouselImage} />
+              </Link>
+            </SwiperSlide>
+        )
+        
+      }))
+    }
+
+    fetchData()
+
+  }, [])
+
+
+  useEffect(() => {console.log(products)}, [products])
+
   return (
     <Swiper
         id="carouselid"
@@ -40,28 +79,12 @@ function Carousel() {
          
         }}
         pagination={true}
-        modules={[Autoplay, EffectCoverflow, Pagination]}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
         className={styles.swiper}
     >
-        {/* <SwiperSlide><img src={img1} alt="ipsum1" /></SwiperSlide>
-        <SwiperSlide><img src={img2} alt="ipsum2" /></SwiperSlide> */}
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src={"https://picsum.photos/400/500"} alt="ipsum3" className={styles.carouselImage} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src={"https://picsum.photos/400/500"} alt="ipsum3" className={styles.carouselImage} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src={"https://picsum.photos/400/500"} alt="ipsum3" className={styles.carouselImage} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src={"https://picsum.photos/400/500"} alt="ipsum3" className={styles.carouselImage} />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src={"https://picsum.photos/400/500"} alt="ipsum3" className={styles.carouselImage} />
-        </SwiperSlide>
-        {/* <SwiperSlide className={styles.swiperSlide}><img src="https://picsum.photos/300/400" alt="ipsum3" /></SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}><img src="https://picsum.photos/300/400" alt="ipsum3" /></SwiperSlide> */}
+        
+        {products}
+
     </Swiper>
   )
 }
