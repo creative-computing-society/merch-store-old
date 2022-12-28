@@ -4,10 +4,53 @@ import Navbar from '../Navbar/Navbar';
 
 import { api_url } from '../../config';
 
-const url = api_url + "cart/view/"
+const view_url = api_url + "cart/view/"
+const delete_url = api_url + "cart/delete/"
+const payment_url = api_url + "order/initiate/"
 
 function Cart() {
-    const [cartItems, setCartItems] = useState();
+    const [cartItems, setCartItems] = useState([]);
+
+    const deleteItem = async (id) => {
+        const token = localStorage.getItem("token")
+
+        const data = {
+            "cart_item_id": id,
+        }
+
+        const config = {
+            headers: {
+                "Authorization": `Token ${token}`
+            }
+        }
+
+        const res = await axios.post(delete_url, data, config)
+        console.log(res.status)
+        if(res.status == 200){
+            const updatedItems = cartItems.filter(item => item.product.id != id)
+            setCartItems(updatedItems)
+        } else {
+            alert("An error occurred")
+        }
+    }
+
+
+    const placeOrder = async (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("token")
+
+        const data = {}
+
+        const config = {
+            headers: {
+                "Authorization": `Token ${token}`
+            }
+        }
+
+        const res = await axios.post("")
+
+    }
 
 
     useEffect(() => {
@@ -20,23 +63,10 @@ function Cart() {
         }
 
         const fetchData = async () => {
-            const res = await axios.get(url, config)
+            const res = await axios.get(view_url, config)
             console.log(res.data)
-            const data = res.data
-            setCartItems(data.map(item => {
-
-                return (
-                    <div>
-                        <div>Name - {item.product.name}</div>
-                        <div>Price - {item.product.price}</div>
-                        <div>Printing Name - {item.printing_name}</div>
-                        <div>Size - {item.size}</div>
-                    </div>
-                )
-                    
-                })
-
-            )
+            setCartItems(res.data)
+            
         }
 
         fetchData();
@@ -46,9 +76,22 @@ function Cart() {
   return (
     <div>
         <Navbar />
-        {cartItems}
 
-        <button>PLACE ORDER</button>
+        {cartItems.map((item) => {
+            return (
+                <div key={item.product.id}>
+                    <div>Name - {item.product.name}</div>
+                    <div>Price - {item.product.price}</div>
+                    {item.product.is_name_required && <div>Printing Name - {item.printing_name}</div>}
+                    {item.product.is_size_required && <div>Size - {item.size}</div>}
+
+                    <button onClick={() => {deleteItem(item.product.id)}}>Delete Item</button>
+                </div>
+            )
+            
+        })}
+
+        <button onClick={placeOrder}>PLACE ORDER</button>
     </div>
   )
 }
