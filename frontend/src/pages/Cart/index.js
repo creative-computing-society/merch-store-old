@@ -16,7 +16,7 @@ function Cart() {
 
         const fetchData = async () => {
             const res = await axios.get("https://merchapi.ccstiet.com/cart/view", config)
-            setCartItems(res.map(item, 
+            setCartItems(res.map(item =>
                 <div>
                     <div>Name - {item.product.name}</div>
                     <div>Price - {item.product.price}</div>
