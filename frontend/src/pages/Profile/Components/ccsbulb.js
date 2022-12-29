@@ -95,10 +95,10 @@ function CcsBulb() {
                   <div className={styles.order}>
                     {item.order_items.map(product => {
                       return (
-                        <div>{product.product.name} {product.printing_name} {product.size} {product.product.price}</div>
+                        <div>{product.product.name} {product.printing_name} {product.size} ₹{product.product.price}</div>
                       )
                     })}
-                    <div>{item.amount}</div>
+                    <div>TOTAL - ₹{item.amount}</div>
                   </div>
                 )
               })}
