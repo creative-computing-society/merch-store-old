@@ -3,19 +3,22 @@ import axios from "axios"
 import Navbar from '../Navbar/Navbar';
 
 import { api_url } from '../../config';
+import {  useNavigate } from 'react-router-dom';
 
 const view_url = api_url + "cart/view/"
 const delete_url = api_url + "cart/delete/"
-const payment_url = api_url + "order/initiate/"
+const payment_initiate_url = api_url + "order/place/"
 
 function Cart() {
+    const navigate = useNavigate()
+
     const [cartItems, setCartItems] = useState([]);
 
     const deleteItem = async (id) => {
         const token = localStorage.getItem("token")
 
         const data = {
-            "cart_item_id": id,
+            "cart_item_id": parseInt(id),
         }
 
         const config = {
@@ -48,7 +51,12 @@ function Cart() {
             }
         }
 
-        const res = await axios.post("")
+        const res = await axios.post(payment_initiate_url, data, config)
+        if(res.status == 200) {
+            const payment_session_id = res.data.payment_session_id
+
+            navigate("/redirect", {state: {payment_session_id: payment_session_id}});
+        }
 
     }
 

@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "../Style/ccsbulb.module.css";
 import Navbar from "./navbar.js"
+import AuthContext from "../../../store/auth-context";
 
 import ccsbulb from "../Assets/CCS_Bulb.png"
 
@@ -11,6 +12,8 @@ import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 
 function CcsBulb() {
+  const authCtx = useContext(AuthContext)
+
   return (
     <div className={styles.container}>
       <div className={styles.contentSection}>
@@ -53,7 +56,7 @@ function CcsBulb() {
       </div>
       
       <div className={styles.subcontainer}>
-        <button className={styles.button}>LOGOUT</button>
+        <button className={styles.button} onClick={authCtx.logout}>LOGOUT</button>
       </div>
     </div>
 
