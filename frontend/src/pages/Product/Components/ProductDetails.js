@@ -90,7 +90,7 @@ function ProductDetails(props) {
         <div className={styles.container}>
 
             <div className={styles.child}>
-                <ProductCarousel />
+                <ProductCarousel image_url1={props.details.image_url1} image_url2={props.details.image_url2}/>
             </div>
             <div className={styles.child}>
                 <hr/>   

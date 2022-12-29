@@ -118,8 +118,8 @@ function Cart() {
                             
                             <button className={styles.button1} onClick={() => { deleteItem(item.product.id) }}>Delete Item</button>
                             <hr style={{
-                                background: 'grey',
-                                color: 'grey',
+                                background: 'black',
+                                color: 'black',
                                 borderColor: 'white',
                                 height: '0.5px',
                                 width: '30%',
