@@ -30,7 +30,7 @@ function Cart() {
         const res = await axios.post(delete_url, data, config)
         console.log(res.status)
         if(res.status == 200){
-            const updatedItems = cartItems.filter(item => item.product.id != id)
+            const updatedItems = cartItems.filter(item => item.id != id)
             setCartItems(updatedItems)
         } else {
             alert("An error occurred")
@@ -54,8 +54,8 @@ function Cart() {
         const res = await axios.post(payment_initiate_url, data, config)
         if(res.status == 200) {
             const payment_session_id = res.data.payment_session_id
-
-            navigate("/redirect", {state: {payment_session_id: payment_session_id}});
+            alert("order placed")
+            // navigate("/redirect", {state: {payment_session_id: payment_session_id}});
         }
 
     }
@@ -93,7 +93,7 @@ function Cart() {
                     {item.product.is_name_required && <div>Printing Name - {item.printing_name}</div>}
                     {item.product.is_size_required && <div>Size - {item.size}</div>}
 
-                    <button onClick={() => {deleteItem(item.product.id)}}>Delete Item</button>
+                    <button onClick={() => {deleteItem(item.id)}}>Delete Item</button>
                 </div>
             )
             
