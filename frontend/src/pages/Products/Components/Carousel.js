@@ -5,7 +5,7 @@ import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-// Import Swiper styles
+// import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
