@@ -133,8 +133,6 @@ function ProductDetails(props) {
                             </button>
                         }
                     </div>
-
-                    
                 <hr/>
             </div>
         </div>
