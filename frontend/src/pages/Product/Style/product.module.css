@@ -72,7 +72,8 @@
     .imgcon{
         display: none;
     }
-    .child{
-      display: list-item;
+
+    .child {
+      width: 90%;
     }
   }
