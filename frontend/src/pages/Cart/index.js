@@ -31,8 +31,8 @@ function Cart() {
 
         const res = await axios.post(delete_url, data, config)
         console.log(res.status)
-        if (res.status == 200) {
-            const updatedItems = cartItems.filter(item => item.product.id != id)
+        if(res.status == 200){
+            const updatedItems = cartItems.filter(item => item.id != id)
             setCartItems(updatedItems)
         } else {
             alert("An error occurred")
@@ -57,7 +57,7 @@ function Cart() {
         if (res.status == 200) {
             const payment_session_id = res.data.payment_session_id
 
-            navigate("/redirect", { state: { payment_session_id: payment_session_id } });
+            navigate("/redirect", {state: {payment_session_id: payment_session_id}});
         }
 
     }
@@ -83,54 +83,21 @@ function Cart() {
     }, [])
 
 
-    return (
-        <div>
-            <div className={styles.imgcon}>
-            <img src={logo} alt="react logo" style={{
-                width: '180px',
-                height: '85px',
-                position: 'absolute',
-                paddingLeft: '15px',
-                paddingTop: '10px'
-            }} />
-            </div>
-            <Navbar />
-            <hr
-                style={{
-                    background: 'grey',
-                    color: 'grey',
-                    borderColor: 'white',
-                    height: '0.5px',
-                    width: '60%',
-                    marginTop: '1rem',
-                    marginBottom: '1rem'
-                }}
-            />
-            {cartItems.map((item) => {
-                return (
+  return (
+    <div>
+        <Navbar />
 
-                    <div key={item.product.id} className={styles.container}>
-                        <div className={styles.sub}>
-                            <div className={styles.discription}>Name - {item.product.name}</div>
-                            <div className={styles.discription}>Price - {item.product.price}</div>
-                            {item.product.is_name_required && <div className={styles.discription}>Printing Name - {item.printing_name}</div>}
-                            {item.product.is_size_required && <div className={styles.discription}>Size - {item.size}</div>}
-                            
-                            <button className={styles.button1} onClick={() => { deleteItem(item.product.id) }}>Delete Item</button>
-                            <hr style={{
-                                background: 'grey',
-                                color: 'grey',
-                                borderColor: 'white',
-                                height: '0.5px',
-                                width: '30%',
-                                marginTop: '1rem',
-                                marginBottom: '1rem'
-                            }} />
-                        </div>
-                    </div>
+        {cartItems.map((item) => {
+            return (
+                <div key={item.product.id}>
+                    <div>Name - {item.product.name}</div>
+                    <div>Price - {item.product.price}</div>
+                    {item.product.is_name_required && <div>Printing Name - {item.printing_name}</div>}
+                    {item.product.is_size_required && <div>Size - {item.size}</div>}
 
-                )
-            })}
+                    <button onClick={() => {deleteItem(item.product.id)}}>Delete Item</button>
+                </div>
+            )
             
             <div className={styles.container}>
                 <button className={styles.button} onClick={placeOrder}>PLACE ORDER</button>
