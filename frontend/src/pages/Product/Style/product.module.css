@@ -67,3 +67,11 @@
     padding-bottom: 0.75rem;
     padding-top: 0.75rem;
   }
+  @media (max-width: 768px) {
+    .imgcon{
+        display: none;
+    }
+    .child{
+      display: list-item;
+    }
+  }
