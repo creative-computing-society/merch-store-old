@@ -98,7 +98,7 @@ function ProfilePage() {
                         <div>{product.product.name} {product.printing_name} {product.size} ₹{product.product.price}</div>
                       )
                     })}
-                    <div>TOTAL - ₹{item.amount}</div>
+                     Total: {item.amount}
                   </div>
                 )
               })}
