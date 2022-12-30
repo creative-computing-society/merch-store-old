@@ -1,51 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
 
-.container {
+.background{
+    
+    background-color: #dcf5f4;
+    /* background-color: #f3f8f7; */
+    min-height: 100vh;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+    padding-top: 0.5rem;
+}
+.element {
+    text-align: left;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.7rem;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    
+}
+.elements{
+    padding-top: 1rem;
+    /* width: 50%; */
+    
+}
+.productImage{
+    height: 200px;
+    width: 200px;
+    
+  }
+  .child {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    vertical-align: top;
+    /* width: 30%; */
     text-align: center;
-    padding: 0.5rem;
-}
-.sub{
-    border-color: #000;
-    border-width: 3px;
-    /* text-align: left; */
-}
+  }
 .button {
     padding: 1rem;
     width: 250px;
-    background: #36BBBD;
-    border-radius: 30px;
+    /* background: #36BBBD; */
+    background: rgb(0, 0, 0);
+    border-radius: 29px;
     border-width: 0px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: large;
+    font-size: 22px;
     letter-spacing: 0.075em;
-    color: #000;
+    color: rgb(255, 255, 255);
 }
 .button:hover {
-    transform: scale(1.06);
+    transform: scale(1.03);
     transition-duration: 0.4s;
+  }
+  .btncon{
+    text-align: center;
+    padding-bottom: 0.3rem;
   }
   .button1 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
     width: 180px;
-    background: #000000;
-    border-radius: 30px;
+    background: #050505;
+    border-radius: 0.5rem;
     border-width: 0px;
-    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: large;
+    font-size: 18px;
     letter-spacing: 0.05em;
     color: rgb(255, 255, 255);
 }
 .discription{
-    text-align: center;
+    text-align: left;
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -55,8 +90,10 @@
     padding-bottom: 0.3rem;
     border: #000;
 }
+
 .button1:hover{
-    transform: scale(1.06);
+    /* background: #ef1818; */
+    transform: scale(1.03);
     transition-duration: 0.4s;
 }
 @media (max-width: 768px) {

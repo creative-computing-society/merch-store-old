@@ -7,6 +7,9 @@ import logo from "../Navbar/Assets/logo.png"
 import { api_url } from '../../config';
 import { useNavigate } from 'react-router-dom';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
 const view_url = api_url + "cart/view/"
 const delete_url = api_url + "cart/delete/"
 const payment_initiate_url = api_url + "order/place/"
@@ -31,7 +34,7 @@ function Cart() {
 
         const res = await axios.post(delete_url, data, config)
         console.log(res.status)
-        if(res.status == 200){
+        if (res.status == 200) {
             const updatedItems = cartItems.filter(item => item.id != id)
             setCartItems(updatedItems)
         } else {
@@ -57,7 +60,7 @@ function Cart() {
         if (res.status == 200) {
             const payment_session_id = res.data.payment_session_id
 
-            navigate("/redirect", {state: {payment_session_id: payment_session_id}});
+            navigate("/redirect", { state: { payment_session_id: payment_session_id } });
         }
 
     }
@@ -84,21 +87,21 @@ function Cart() {
 
 
     return (
-        <div>
+        <div className={styles.background}>
             <div className={styles.imgcon}>
-            <img src={logo} alt="react logo" style={{
-                width: '180px',
-                height: '85px',
-                position: 'absolute',
-                paddingLeft: '15px',
-                paddingTop: '10px'
-            }} />
+                <img src={logo} alt="react logo" style={{
+                    width: '180px',
+                    height: '85px',
+                    position: 'absolute',
+                    paddingLeft: '15px',
+                    paddingTop: '10px'
+                }} />
             </div>
             <Navbar />
             <hr
                 style={{
-                    background: 'grey',
-                    color: 'grey',
+                    background: 'black',
+                    color: 'black',
                     borderColor: 'white',
                     height: '0.5px',
                     width: '60%',
@@ -107,31 +110,40 @@ function Cart() {
                 }}
             />
             {cartItems.map((item) => {
+            
                 return (
-
-                    <div key={item.product.id} className={styles.container}>
-                        <div className={styles.sub}>
-                            <div className={styles.discription}>Name - {item.product.name}</div>
-                            <div className={styles.discription}>Price - {item.product.price}</div>
-                            {item.product.is_name_required && <div className={styles.discription}>Printing Name - {item.printing_name}</div>}
-                            {item.product.is_size_required && <div className={styles.discription}>Size - {item.size}</div>}
-                            
-                            <button className={styles.button1} onClick={() => { deleteItem(item.product.id) }}>Delete Item</button>
-                            <hr style={{
-                                background: 'black',
-                                color: 'black',
-                                borderColor: 'white',
-                                height: '0.5px',
-                                width: '30%',
-                                marginTop: '1rem',
-                                marginBottom: '1rem'
-                            }} />
+                    <div className={styles.container}>
+                        <div key={item.product.id} className={styles.elements} >
+                            <div className={styles.element}>
+                            <div className={styles.btncon}>
+                                </div>
+                                <div className={styles.child} ><img src={item.product.image_url1} className={styles.productImage} /></div>
+                                <div className={styles.child}>
+                                    <div className={styles.discription}><b>{item.product.name}</b></div>
+                                    <div className={styles.discription}><b>Cost:</b> {item.product.price}</div>
+                                    {item.product.is_size_required && <div className={styles.discription}><b>Size:</b> {item.size}</div>}
+                                    <div className={styles.discription}><b>Quantity:</b> 1</div>
+                                    {item.product.is_name_required && <div className={styles.discription}><b>Printing Name:</b> <br/>{item.printing_name}</div>}
+                                    
+                                </div>
+                                <div className={styles.btncon}>
+                                    <button className={styles.button1} onClick={() => { deleteItem(item.product.id) }}>Delete Item</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 )
             })}
-            
+            <hr style={{
+                background: 'black',
+                color: 'black',
+                borderColor: 'white',
+                height: '0.5px',
+                width: '50%',
+                marginTop: '1rem',
+                marginBottom: '1rem'
+            }} />
             <div className={styles.container}>
                 <button className={styles.button} onClick={placeOrder}>PLACE ORDER</button>
             </div>

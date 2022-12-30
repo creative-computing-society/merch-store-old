@@ -12,12 +12,13 @@
 
 }
 
+
 .child {
     display: inline-block;
     padding: 3rem 2rem;
     vertical-align: middle;
     text-align: left;
-    width: 40%;
+    width: 30%;
 }
 
 .title {

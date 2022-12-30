@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "../Style/ccsbulb.module.css";
 import Navbar from "./navbar.js"
 import AuthContext from "../../../store/auth-context";
@@ -25,9 +25,9 @@ function CcsBulb() {
     const token = localStorage.getItem("token")
 
     const config = {
-        headers: {
-            "Authorization": `Token ${token}`
-        }
+      headers: {
+        "Authorization": `Token ${token}`
+      }
     }
 
     const fetchData = async () => {
@@ -44,9 +44,9 @@ function CcsBulb() {
     const token = localStorage.getItem("token")
 
     const config = {
-        headers: {
-            "Authorization": `Token ${token}`
-        }
+      headers: {
+        "Authorization": `Token ${token}`
+      }
     }
 
     const fetchData = async () => {
@@ -78,18 +78,18 @@ function CcsBulb() {
           Previous Orders :-
         </div>
 
-        <div class={styles.parent}>
+        <div >
 
-          { previousOrders.length == 0 &&
-            <div className={styles.child}>
+          {previousOrders.length == 0 &&
+            <div className={styles.orderContainer}>
               <div className={styles.order}>
-                You have no orders you poor piece of shit
+                You have no previous orders
               </div>
             </div>
           }
 
-          { previousOrders &&
-            <div className={styles.child}>
+          {previousOrders &&
+            <div className={styles.orderContainer}>
               {previousOrders.map(item => {
                 return (
                   <div className={styles.order}>
@@ -108,9 +108,8 @@ function CcsBulb() {
         </div>
 
       </div>
-      
       <div className={styles.subcontainer}>
-        <button className={styles.button} onClick={authCtx.logout}>LOGOUT</button>
+        <button className={styles.button} >Change Password</button>
       </div>
     </div>
 
