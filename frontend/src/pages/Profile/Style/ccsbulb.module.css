@@ -15,39 +15,35 @@
   font-size: 25px;
   font-weight: 500;
   padding-top: 1rem;
+  padding-bottom: 1.5rem;
   color: #fff;
 }
 
 .order {
-  background-color: #ffffff40;
-  /* opacity: 0.7; */
-  border-radius: 30px;
+  /* background-color: #ffffff40; */
+  opacity: 0.7;
+  background-color: aliceblue;
   padding-top: 0.6rem;
   color: black;
   font-size: 20px;
-  width: 400px;
+  width: 40%;
+  height: 10vh;
+  text-align: center;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin: 0.7rem;
 }
 
-.parent {
-  margin: 0rem;
-  padding: 1rem 1rem;
-  text-align: center;
+.orderContainer{
+  display: flex;
+  justify-content: center;
 }
-
-.child {
-  display: inline-block;
-  vertical-align: middle;
-}
-
 .button {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  padding-right: 5rem;
-  padding-left: 5rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
   border-radius: 2rem;
   font-size: 20px;
   font-weight: 500;
