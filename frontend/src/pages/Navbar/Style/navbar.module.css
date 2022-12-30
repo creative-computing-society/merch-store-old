@@ -2,22 +2,42 @@
 
 .navbar {
   overflow: hidden;
-  text-align: center;
-  margin: auto;
+  /* text-align: center; */
+  /* margin: auto; */
   padding-top: 2rem;
   padding-bottom: 0rem;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.navbar img {
+  width: 15%;
+  max-width: 180px;
+  /* display: flex; */
+  position: absolute;
+  left: 20px;
+  /* display: inline-block; */
+  
+}
+
+.links {
+  display: inline-block;
+  /* text-align: center; */
+  margin: 0 auto;
+  /* margin-top: 80px; */
 }
 
 .navbar a {
   float: none;
   text-align: center;
-  padding: 14px 30px;
+  padding: 14px 15px;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-size: 25px;
   font-weight: 500;
   text-transform: uppercase;
-  color: #000;
+  /* color: #000; */
 
 }
 .logo {
@@ -43,16 +63,14 @@ h2 {
     padding-bottom: 0rem;
   }
   .navbar a {
-    float: none;
-    text-align: center;
     padding: 10px 5px;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
     font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #000;
-  
+  }
+
+  @media (max-width: 600px) {
+    .navbar img {
+      display: none;
+    }
   }
   
 }

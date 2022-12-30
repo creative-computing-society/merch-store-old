@@ -1,10 +1,10 @@
 import React from "react";
-import CcsBulb from "./Components/ccsbulb";
+import ProfilePage from "./Components/ProfilePage";
 
 function Profile() {
   return (
     <div>
-      <CcsBulb/>
+      <ProfilePage/>
     </div>
   );
 }

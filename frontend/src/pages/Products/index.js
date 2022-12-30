@@ -8,12 +8,6 @@ function Products() {
   return (
     <>
     <div className={styles.imgcon}>
-    <img src={logo} alt="react logo" style={{ 
-      width: '180px',
-      height: '85px',
-      position:'absolute',
-      paddingLeft:'15px',
-      paddingTop:'10px'}} />
       </div>
       <Navbar/>
       <Carousel />
@@ -21,4 +15,4 @@ function Products() {
   )
 }
 
-export default Products
+// export default Products

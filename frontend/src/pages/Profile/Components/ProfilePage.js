@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from "react";
 import styles from "../Style/ccsbulb.module.css";
-import Navbar from "./navbar.js"
+import Navbar from "../../Navbar/Navbar"
 import AuthContext from "../../../store/auth-context";
 
 import ccsbulb from "../Assets/CCS_Bulb.png"
@@ -15,7 +15,7 @@ import { api_url } from "../../../config";
 const user_url = api_url + "auth/user/"
 const orders_url = api_url + "order/all/"
 
-function CcsBulb() {
+function ProfilePage() {
   const authCtx = useContext(AuthContext)
 
   const [userDetails, setUserDetails] = useState({});
@@ -61,7 +61,7 @@ function CcsBulb() {
   return (
     <div className={styles.container}>
       <div className={styles.contentSection}>
-        <Navbar />
+        <Navbar theme={"light"}/>
         <hr
           style={{
             background: 'white',
@@ -118,4 +118,4 @@ function CcsBulb() {
   );
 }
 
-export default CcsBulb;
+export default ProfilePage;

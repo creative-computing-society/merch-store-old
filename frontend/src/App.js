@@ -4,7 +4,7 @@ import React, {useContext} from "react";
 import './App.css';
 import LoginPage from "./pages/Login/loginpage.js"
 import Home from "./pages/Home/index.js"
-import Products from "./pages/Products";
+// import Products from "./pages/Products";
 import Navbar from "./pages/Navbar/Navbar";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
@@ -22,7 +22,7 @@ function App() {
       <Routes>
         {!authCtx.isLoggedIn && <Route path="/login" element={<LoginPage />} />}
         {authCtx.isLoggedIn && <Route exact path="/" element={<Home />} />}
-        {authCtx.isLoggedIn && <Route path="/products" element={<Products />} />}
+        {/* {authCtx.isLoggedIn && <Route path="/products" element={<Products />} />} */}
         {authCtx.isLoggedIn && <Route path="/product/:id" element={<Product />} />}
         {authCtx.isLoggedIn && <Route path="/cart" element={<Cart />} />}
         {authCtx.isLoggedIn && <Route path="/redirect" element={<Redirect />} />}

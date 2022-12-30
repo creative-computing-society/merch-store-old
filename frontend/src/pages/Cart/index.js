@@ -85,15 +85,6 @@ function Cart() {
 
     return (
         <div>
-            <div className={styles.imgcon}>
-            <img src={logo} alt="react logo" style={{
-                width: '180px',
-                height: '85px',
-                position: 'absolute',
-                paddingLeft: '15px',
-                paddingTop: '10px'
-            }} />
-            </div>
             <Navbar />
             <hr
                 style={{

@@ -1,11 +1,13 @@
 import React from "react";
-import CcsBulb from "./Components/ccsbulb";
+import Products from "./Components/Products";
+import Hero from "./Components/Hero";
 
 
 function Home() {
   return (
-    <div>
-      <CcsBulb/>
+    <div style={{backgroundColor: "#eeeeee"}}>
+      <Hero/>
+      <Products />
     </div>
   );
 }
