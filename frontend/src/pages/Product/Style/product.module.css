@@ -3,6 +3,10 @@
 .container {
     margin: 20px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .parent {
@@ -21,29 +25,39 @@
     width: 30%;
 }
 
+.product_name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
 .title {
     float: none;
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 27px;
     font-weight: 500;
     color: black;
+    margin-bottom: 10px;
 }
 .title2 {
     float: none;
-    text-align: left;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     font-size: 20px;
     font-weight: 500;
     color: black;
+    margin-bottom: 20px;
 }
-.button {
+.cartButton {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     /* border-radius: 2rem; */
-    width: 100%;
+    width: 50%;
     font-size: 20px;
     font-weight: 500;
     color: white;
@@ -52,29 +66,59 @@
     font-style: normal;
     font-weight: 500;
     border: 0rem;
+    display: block;
+    margin: 20px auto;
+
   }
   
-  .button:hover {
-    transform: scale(1.06);
-    transition-duration: 0.4s;
-  }
-  .ic{
-    width: 100%;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    font-size: 20px;
-    text-align: left;
-  }
-  .contain{
-    padding-bottom: 0.75rem;
-    padding-top: 0.75rem;
-  }
-  @media (max-width: 768px) {
-    .imgcon{
-        display: none;
-    }
+.cartButton:hover {
+  transform: scale(1.06);
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 
-    .child {
-      width: 90%;
-    }
+.ic{
+  width: 100%;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+}
+
+.ic:focus {
+  outline: none;
+}
+
+.sizeButtons {
+  margin-bottom: 30px;
+}
+
+
+
+.contain{
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 1200px) {
+  .child {
+    width: 50%;
   }
+}
+
+@media (max-width: 768px) {
+  .imgcon{
+      display: none;
+  }
+
+  .child {
+    width: 90%;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+}

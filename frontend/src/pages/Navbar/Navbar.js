@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Style/navbar.module.css";
 import logo from "./Assets/logo.png";
+import AuthContext from "../../store/auth-context";
+
 function Navbar(props) {
+    const authCtx = useContext(AuthContext)
+
     console.log(props.theme)
 
     return (
@@ -13,7 +17,8 @@ function Navbar(props) {
                 {/* <Link to="/products" style={{color: props.theme == "light"?"#fff":"#000"}}>PRODUCTS</Link> */}
                 <Link to="/cart" style={{color: props.theme == "light"?"#fff":"#000"}}>CART</Link>
                 <Link to="/profile" style={{color: props.theme == "light"?"#fff":"#000"}}>PROFILE</Link>
-                <Link style={{color: props.theme == "light"?"#fff":"#000"}}>LOGOUT</Link>
+                <Link onClick={authCtx.logout} style={{color: props.theme == "light"?"#fff":"#000"}}>LOGOUT</Link>
+                {/* <Link onClick={authCtx.logout} style={{color: "#f24835"}}>LOGOUT</Link> */}
             </div>
         </div>
   );

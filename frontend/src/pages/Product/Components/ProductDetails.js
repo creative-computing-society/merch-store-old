@@ -7,6 +7,8 @@ import ProductCarousel from './ProductCarousel.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
+import SizeButton from './SizeButton';
+
 import { api_url } from '../../../config';
 const url = api_url + "cart/add/"
 
@@ -86,6 +88,13 @@ function ProductDetails(props) {
         setLoading(false);
     }
 
+    const onSizeChange = (size) => {
+        setSelectedSize(size)
+    }
+
+    useEffect(() => {console.log(selectedSize)}, [selectedSize])
+
+
     return (
         <div className={styles.container}>
 
@@ -93,19 +102,20 @@ function ProductDetails(props) {
                 <ProductCarousel image_url1={props.details.image_url1} image_url2={props.details.image_url2}/>
             </div>
             <div className={styles.child}>
-                <hr/>   
+                {/* <hr/>    */}
                 <div className={styles.contain}>
-                    <div className={styles.title2}>Product Details: {props.details.name}</div>
-                    <div className={styles.title2}>Price: {props.details.price}</div>
+                    <div className={styles.product_name}>{props.details.name}</div>
+                    <div className={styles.title2}>Price: <span style={{color: "red"}}>₹{props.details.price}</span></div>
                 </div>
-                <hr/>   
+                {/* <hr/>    */}
                 { props.details.is_name_required && 
                     <div className={styles.contain}>
-                        <div className={styles.title}>Enter Name</div>
+                        <div className={styles.title}>Enter Printing Name</div>
                         <input
                             className={styles.ic}
                             type="text"
                             onChange={nameChangeHandler}
+                            placeholder="SAMPLE NAME"
                         />
                     </div>
                 }
@@ -113,27 +123,34 @@ function ProductDetails(props) {
                 { props.details.is_size_required && 
                     <div className={styles.contain}>
                         <div className={styles.title}>Choose a Size</div>
-                        <Select options={options} value={selectedSize} onChange={setSelectedSize} />
+                        {/* <Select options={options} value={selectedSize} onChange={setSelectedSize} /> */}
+                        <div className={styles.sizeButtons}>
+                            <SizeButton size="S" changeSize={onSizeChange} selected={selectedSize=="S"}/>
+                            <SizeButton size="M" changeSize={onSizeChange} selected={selectedSize=="M"}/>
+                            <SizeButton size="L" changeSize={onSizeChange} selected={selectedSize=="L"}/>
+                            <SizeButton size="XL" changeSize={onSizeChange} selected={selectedSize=="XL"}/>
+                            <SizeButton size="XXL" changeSize={onSizeChange} selected={selectedSize=="XXL"}/>
+                        </div>
                     </div>
                 }
-                    <hr/>
+                    {/* <hr/> */}
                     <div className={styles.contain}>
                         
                         {
                             !loading && 
-                            <button className={styles.button} onClick={addToCart}>
+                            <button className={styles.cartButton} onClick={addToCart}>
                                 Add to Cart
                             </button>
                         }
                         
                         {
                             loading && 
-                            <button type="submit" className={styles.button} disabled>
+                            <button type="submit" className={styles.cartButton} disabled>
                                 <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
                             </button>
                         }
                     </div>
-                <hr/>
+                {/* <hr/> */}
             </div>
         </div>
     )

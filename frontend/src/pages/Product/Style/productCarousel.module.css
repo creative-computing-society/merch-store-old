@@ -30,3 +30,9 @@
     object-fit: cover;
     margin: auto;
 }
+
+@media (max-width: 1400px) {
+    .mySwiper img {
+        width: 70%
+    }
+}

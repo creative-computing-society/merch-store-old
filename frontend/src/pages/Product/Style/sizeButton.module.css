@@ -1,0 +1,12 @@
+.sizeButton {
+    margin-right: 5px;
+    height: 40px;
+    width: 65px;
+    background-color: transparent;
+}
+
+.sizeButton:hover {
+    background-color: #333;
+    color: white;
+    transition-duration: 0.1s;
+}
