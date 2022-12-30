@@ -111,7 +111,7 @@ function Cart() {
                                 <div className={styles.child} ><img src={item.product.image_url1} className={styles.productImage} /></div>
                                 <div className={styles.child}>
                                     <div className={styles.discription}><b>{item.product.name}</b></div>
-                                    <div className={styles.discription}><b>Cost:</b> {item.product.price}</div>
+                                    <div className={styles.discription}><b>Cost:</b> ₹{item.product.price}</div>
                                     {item.product.is_size_required && <div className={styles.discription}><b>Size:</b> {item.size}</div>}
                                     <div className={styles.discription}><b>Quantity:</b> 1</div>
                                     {item.product.is_name_required && <div className={styles.discription}><b>Printing Name:</b> <br/>{item.printing_name}</div>}
