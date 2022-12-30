@@ -12,7 +12,7 @@
   filter: drop-shadow(10px 10px 10px rgb(40, 37, 37));
 }
 
-.photo {
+.photo { 
   height: 410px;
   width: 355px;
   position: "absolute"
@@ -74,4 +74,11 @@
   }
 
 
+}
+@media(max-height:680px){
+  .photo{
+    height: 340px;
+    width: 300px;
+    position: "absolute"
+  }
 }
