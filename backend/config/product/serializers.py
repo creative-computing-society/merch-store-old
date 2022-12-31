@@ -14,7 +14,7 @@ class ProductSerializer(serializers.ModelSerializer):
             return ""
         if not obj.accept_orders:
             return "forbidden"
-        if OrderItem.objects.filter(product=obj, order__user=user).exists():
+        if OrderItem.objects.filter(product=obj, order__user=user, order__is_paid=True).exists():
             return "ordered"
         if CartItem.objects.filter(product=obj, user=user).exists():
             return "incart"

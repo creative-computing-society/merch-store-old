@@ -12,6 +12,10 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     amount = models.CharField(max_length=10)
 
+    cf_order_id = models.CharField(max_length=500, null=True, default=None, blank=True)
+    payment_session_id = models.CharField(max_length=500, null=True, default=None, blank=True)
+    is_paid = models.BooleanField(null=True, default=None)
+
     def __str__(self):
         return self.id
 

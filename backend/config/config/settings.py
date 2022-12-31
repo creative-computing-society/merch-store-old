@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'login',
     'product',
     'order',
+    'dashboard',
     
+    'import_export',
     'rest_framework',
     'rest_framework.authtoken',
 ]
@@ -139,8 +141,19 @@ AUTH_USER_MODEL = 'login.User'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CF_CLIENT_ID = config('CF_CLIENT_ID')
+CF_SECRET_KEY = config('CF_SECRET_KEY')
+
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Payment Gateway...</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'order/img/CCSLOGO.jpg' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body onload="render();">
+    <input type="text form-control" placeholder="order_token" id="paymentSessionId" class="inputText">
+    <button class="btn btn-primary" onclick="render();">Render</button>
+    <div class="container mt-5">
+        <div class="row text-center">
+            <div class="col">
+                <img class="img-fluid" width="200px" src="{% static 'order/img/ccs_logo.png' %}" >
+            </div>
+            <h1 class="h3 mt-3">Redirecting you to the Payment Gateway...</h1>
+            <h2 class="h4 mt-2">Please do not close or refresh the page</h2>
+        </div>
+    </div>
+
+    <script src="https://sdk.cashfree.com/js/ui/2.0.0/cashfree.sandbox.js"></script>
+    <script>
+        function render() {
+            let paymentSessionId = document.getElementById("paymentSessionId").value;
+            if (paymentSessionId == "") {
+                alert("No session_id specified");
+                return
+            };
+            const cf = new Cashfree(paymentSessionId);
+            cf.redirect();
+        };
+    </script>
+</body>
+</html>
+

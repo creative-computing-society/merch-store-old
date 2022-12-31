@@ -39,7 +39,7 @@ class AddToCart(APIView):
         product_id = request.data.get('product_id')
         product = Product.objects.filter(id=product_id).first()
         user = request.user
-        if product is None or user.position not in product.for_user_positions or CartItem.objects.filter(user=user, product=product).exists() or OrderItem.objects.filter(product=product, order__user=user).exists():
+        if product is None or user.position not in product.for_user_positions or CartItem.objects.filter(user=user, product=product).exists() or OrderItem.objects.filter(product=product, order__user=user, order__is_paid=True).exists():
             return Response(status=status.HTTP_400_BAD_REQUEST)
         printing_name = request.data.get('printing_name')
         size = request.data.get('size')
