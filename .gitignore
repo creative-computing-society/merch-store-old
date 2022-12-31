@@ -39,24 +39,11 @@ __pycache__
 #environment variables
 .env
 
-#database folder
-database
-
 #virtual environment
 venv
 
-#static files root directory
-/static
-
 #media files root
-/media
-
-#ssl certificates
-privkey.pem
-cert.pem
-
-#docker-compose file
-docker-compose.yml
+media
 
 #error logs
 logs
