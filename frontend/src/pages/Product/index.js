@@ -34,12 +34,10 @@ function Product() {
 
   // useEffect(() => {console.log(details)}, [details])
 
-
   return (
     <>
       <Navbar />
       <div className={styles.container}>
-        
         <ProductDetails details={details} />
       </div>
     </>

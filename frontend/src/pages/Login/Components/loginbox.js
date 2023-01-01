@@ -80,7 +80,7 @@ function Loginbox() {
                 className={styles.inputBox1}
                 value={email}
                 onChange={(e) => {setEmail(e.target.value)}}
-              />
+              /> 
             </div>
             <div className={styles.inputBox}>
               <input

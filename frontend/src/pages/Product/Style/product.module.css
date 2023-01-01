@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
 
 .container {
-    margin: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  margin: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .parent {
-    margin: 2rem;
-    padding: 2rem 2rem;
-    text-align: center;
+  margin: 2rem;
+  padding: 2rem 2rem;
+  text-align: center;
 
 }
 
 
 .child {
-    display: inline-block;
-    padding: 3rem 2rem;
-    vertical-align: middle;
-    text-align: left;
-    width: 30%;
+  display: inline-block;
+  padding: 3rem 2rem;
+  vertical-align: middle;
+  text-align: left;
+  width: 30%;
 }
 
 .product_name {
@@ -34,50 +34,52 @@
 }
 
 .title {
-    float: none;
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    font-size: 27px;
-    font-weight: 500;
-    color: black;
-    margin-bottom: 10px;
+  float: none;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 27px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 10px;
 }
-.title2 {
-    float: none;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 500;
-    color: black;
-    margin-bottom: 20px;
-}
-.cartButton {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    /* border-radius: 2rem; */
-    width: 50%;
-    font-size: 20px;
-    font-weight: 500;
-    color: white;
-    background: black;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    border: 0rem;
-    display: block;
-    margin: 20px auto;
 
-  }
-  
+.title2 {
+  float: none;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.cartButton {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  /* border-radius: 2rem; */
+  width: 50%;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  background: black;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  border: 0rem;
+  display: block;
+  margin: 20px auto;
+
+}
+
 .cartButton:hover {
   transform: scale(1.06);
   transition-duration: 0.4s;
   cursor: pointer;
 }
 
-.ic{
+.ic {
   width: 100%;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
@@ -98,7 +100,7 @@
 
 
 
-.contain{
+.contain {
   padding-bottom: 0.75rem;
   padding-top: 0.75rem;
 }
@@ -107,11 +109,27 @@
   .child {
     width: 50%;
   }
+  .product_name {
+    
+    font-size: 25px;
+ 
+  }
 }
 
 @media (max-width: 768px) {
-  .imgcon{
-      display: none;
+  .imgcon {
+    display: none;
+  }
+
+  .product_name {
+    
+    font-size: 25px;
+ 
+  }
+  .sizeButtons {
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 1rem;
   }
 
   .child {
@@ -120,5 +138,9 @@
 
   .container {
     flex-direction: column;
+  }
+  .title2 {
+    font-size: 18px;
+    
   }
 }
