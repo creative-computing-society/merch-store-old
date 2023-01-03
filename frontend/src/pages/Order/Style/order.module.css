@@ -75,3 +75,17 @@ input::file-selector-button {
 input::file-selector-button:hover{
     text-decoration: underline;
 }
+@media (max-width: 768px) {
+
+    .paymentHeading{
+        font-size: 18px;
+
+    }
+    .paymentDetails{
+        font-size: 18px;
+    }
+    .subContainer{
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+  }
