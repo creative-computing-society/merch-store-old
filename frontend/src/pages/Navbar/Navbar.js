@@ -17,7 +17,7 @@ function Navbar(props) {
                 {/* <Link to="/products" style={{color: props.theme == "light"?"#fff":"#000"}}>PRODUCTS</Link> */}
                 <Link to="/cart" style={{color: props.theme == "light"?"#fff":"#000"}}>CART</Link>
                 <Link to="/profile" style={{color: props.theme == "light"?"#fff":"#000"}}>PROFILE</Link>
-                <Link onClick={authCtx.logout} style={{color: props.theme == "light"?"#fff":"#000"}}>LOGOUT</Link>
+                {authCtx.isLoggedIn ? <Link onClick={authCtx.logout} style={{color: props.theme == "light"?"#fff":"#000"}}>LOGOUT</Link> : <Link to="/login" style={{color: props.theme == "light"?"#fff":"#000"}}>LOGIN</Link>}
                 {/* <Link onClick={authCtx.logout} style={{color: "#f24835"}}>LOGOUT</Link> */}
             </div>
         </div>

@@ -69,7 +69,7 @@ function ProductDetails(props) {
             const data = {
                 "product_id": props.details.id,
                 "printing_name": props.details.is_name_required?printName:null,
-                "size": props.details.is_size_required?selectedSize.value:null,
+                "size": props.details.is_size_required?selectedSize:null,
             }
 
             try{

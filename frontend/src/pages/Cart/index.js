@@ -43,27 +43,27 @@ function Cart() {
     }
 
 
-    const placeOrder = async (e) => {
-        e.preventDefault();
+    // const placeOrder = async (e) => {
+    //     e.preventDefault();
 
-        const token = localStorage.getItem("token")
+    //     const token = localStorage.getItem("token")
 
-        const data = {}
+    //     const data = {}
 
-        const config = {
-            headers: {
-                "Authorization": `Token ${token}`
-            }
-        }
+    //     const config = {
+    //         headers: {
+    //             "Authorization": `Token ${token}`
+    //         }
+    //     }
 
-        const res = await axios.post(payment_initiate_url, data, config)
-        if (res.status == 200) {
-            const payment_session_id = res.data.payment_session_id
+    //     const res = await axios.post(payment_initiate_url, data, config)
+    //     if (res.status == 200) {
+    //         const payment_session_id = res.data.payment_session_id
 
-            navigate("/redirect", { state: { payment_session_id: payment_session_id } });
-        }
+    //         navigate("/redirect", { state: { payment_session_id: payment_session_id } });
+    //     }
 
-    }
+    // }
 
 
     useEffect(() => {
@@ -118,7 +118,7 @@ function Cart() {
                                     
                                 </div>
                                 <div className={styles.btncon}>
-                                    <button className={styles.button1} onClick={() => { deleteItem(item.product.id) }}>Delete Item</button>
+                                    <button className={styles.button1} onClick={() => { deleteItem(item.id) }}>Delete Item</button>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ function Cart() {
                 marginBottom: '1rem'
             }} />
             <div className={styles.container}>
-                <button className={styles.button} onClick={placeOrder}>PLACE ORDER</button>
+                <Link to="/order" className={styles.button}>PLACE ORDER</Link>
             </div>
         </div>
     )
