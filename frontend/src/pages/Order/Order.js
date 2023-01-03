@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-
+import Navbar from "../Navbar/Navbar"
 import { api_url } from '../../config'
 import OrderComplete from './OrderComplete'
+import styles from "./Style/order.module.css"
 const initiate_url = api_url + "order/initiate/"
 const submit_url = api_url + "order/place/"
 
@@ -33,7 +34,7 @@ function Order() {
     const onImageUpload = (e) => {
         console.log("image uploaded")
 
-        if(e.target.files[0].size > 10000000) {
+        if (e.target.files[0].size > 10000000) {
             alert("File size should be below 10MB!")
             setScreenshot()
         } else {
@@ -45,7 +46,7 @@ function Order() {
     const sendScreenshot = async (e) => {
         e.preventDefault()
 
-        if(screenshot) {
+        if (screenshot) {
             const formData = new FormData();
             formData.append('screenshot', screenshot);
             // formData.append('fileName', screenshot.name);
@@ -60,31 +61,42 @@ function Order() {
             };
 
             const res = await axios.post(submit_url, formData, config)
-            
-            if(res.status = 200) {
+
+            if (res.status = 200) {
                 setSubmitted(true)
             }
         } else {
             alert("Upload payment screenshot to continue")
         }
-        
+
     }
 
-    if(!submitted){
-    return (
-        <div>
-            <h1>Payment</h1>
-            <div>Amount: {paymentDetails.amount}</div>
-            <div>UPI ID: {paymentDetails.upi_id}</div>
-            <div>Wallet: {paymentDetails.wallet}</div>
-            <img src={paymentDetails.qr_url} alt="Payment QR" />
+    if (!submitted) {
+        return (
 
-            <div>Upload payment Screenshot</div>
-            <input type="file" onChange={onImageUpload} accept=".png, .jpg, jpeg"/>
-            <button onClick={sendScreenshot}>PAY</button>
-        </div>
-    )
-    }else {
+            <div>
+                <Navbar />
+                <div className={styles.container}>
+                    <div className={styles.subContainer}>
+                        <h1 className={styles.paymentHeading}>Payment Details</h1>
+                        <div className={styles.paymentDetails}><b>Total Amount: </b>{paymentDetails.amount}</div>
+                        <div className={styles.paymentDetails}><b>UPI ID: </b>{paymentDetails.upi_id}</div>
+                        <div className={styles.paymentDetails}><b>Wallet: </b>{paymentDetails.wallet}</div>
+
+                        <img src={paymentDetails.qr_url} alt="Payment QR" className={styles.qr} />
+
+                        <div className={styles.paymentDetails}>Upload payment Screenshot</div>
+                        <div className={styles.ssContainer}>
+                            <input type="file" onChange={onImageUpload} className={styles.ss} accept=".png, .jpg, jpeg" />
+                        </div>
+                        <br />
+                        <button onClick={sendScreenshot} className={styles.btn}>PAY</button>
+
+                    </div>
+                </div>
+            </div>
+        )
+    } else {
         return (
             <OrderComplete />
         )

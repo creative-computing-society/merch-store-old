@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+.paymentDetails{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    
+}
+.paymentHeading{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.subContainer{
+    margin-top: 3rem;
+    padding-left: 2rem;
+    padding-right : 2rem;
+    padding-bottom : 1rem;
+    padding-top : 1rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    text-align: center;
+}
+.btn{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    background-color: rgb(72, 172, 64);
+    width: 70%;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 20px;
+    color: white;
+    border:none;
+
+    
+}
+.btn:hover{
+    background-color: rgb(60, 146, 53);
+}
+.qr{
+    height: 100px;
+    width:100px;
+}
+.ss{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+.ssContainer{
+    padding-top: 1rem;
+}
+input::file-selector-button {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(192, 230, 196);
+    color: rgb(13, 13, 13);
+    border: none;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 20px;
+    
+}
+input::file-selector-button:hover{
+    text-decoration: underline;
+}
