@@ -111,7 +111,7 @@ function ProfilePage() {
 
       </div>
       <div className={styles.subcontainer}>
-        <button className={styles.button} onClick={navigate("/change-password")}>Change Password</button>
+        <button className={styles.button} onClick={() => {navigate("/change-password")}}>Change Password</button>
       </div>
     </div>
 

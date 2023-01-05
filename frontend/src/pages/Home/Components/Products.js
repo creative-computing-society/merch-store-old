@@ -1,26 +1,38 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
 import styles from "../Style/products.module.css"
+import AuthContext from '../../../store/auth-context';
 
 import { api_url } from '../../../config';
 const url = api_url + "product/all/"
 
 function Products() {
+  const authCtx = useContext(AuthContext)
+  
   const [products, setProducts] = useState();
+  
 
   useEffect(() => {
-    // const token = localStorage.getItem("token")
 
-    // const config = {
-    //   headers: {
-    //     "Authorization": `Token ${token}`
-    //   }
-    // }
-
+    
     const fetchData = async () => {
-      const res = await axios.get(url)
-      // const res = await axios.get(url, config)
+      // const res = await axios.get(url)
+      let res;
+      if(authCtx.isLoggedIn) {
+        const token = localStorage.getItem("token")
+
+        const config = {
+          headers: {
+            "Authorization": `Token ${token}`
+          }
+        }
+
+        res = await axios.get(url, config)
+      } else {
+        res = await axios.get(url)
+      }
+      
       const data = res.data
       console.log(data)
       setProducts(data.map(product => {
