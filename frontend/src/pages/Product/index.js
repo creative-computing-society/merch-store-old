@@ -17,15 +17,15 @@ function Product() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const token = localStorage.getItem("token")
+      // const token = localStorage.getItem("token")
 
-      const config = {
-        headers: {
-          "Authorization": `Token ${token}`
-        }
-      }
+      // const config = {
+      //   headers: {
+      //     "Authorization": `Token ${token}`
+      //   }
+      // }
 
-      const res = await axios.get(`${api_url}product/${product_id}`, config)
+      const res = await axios.get(`${api_url}product/${product_id}`)
       setDetails(res.data)
     }
 

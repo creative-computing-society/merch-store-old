@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../Style/ccsbulb.module.css";
 import Navbar from "../../Navbar/Navbar"
 import AuthContext from "../../../store/auth-context";
@@ -17,6 +18,7 @@ const orders_url = api_url + "order/all/"
 
 function ProfilePage() {
   const authCtx = useContext(AuthContext)
+  const navigate = useNavigate();
 
   const [userDetails, setUserDetails] = useState({});
   const [previousOrders, setPreviousOrders] = useState([]);
@@ -109,7 +111,7 @@ function ProfilePage() {
 
       </div>
       <div className={styles.subcontainer}>
-        <button className={styles.button} >Change Password</button>
+        <button className={styles.button} onClick={navigate("/change-password")}>Change Password</button>
       </div>
     </div>
 

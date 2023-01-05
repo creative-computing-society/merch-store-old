@@ -10,16 +10,17 @@ function Products() {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    // const token = localStorage.getItem("token")
 
-    const config = {
-      headers: {
-        "Authorization": `Token ${token}`
-      }
-    }
+    // const config = {
+    //   headers: {
+    //     "Authorization": `Token ${token}`
+    //   }
+    // }
 
     const fetchData = async () => {
-      const res = await axios.get(url, config)
+      const res = await axios.get(url)
+      // const res = await axios.get(url, config)
       const data = res.data
       console.log(data)
       setProducts(data.map(product => {

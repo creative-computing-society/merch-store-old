@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Select from "react-select"
 import styles from "../Style/product.module.css"
 import ProductCarousel from './ProductCarousel.js'
@@ -9,10 +9,14 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import SizeButton from './SizeButton';
 
+import AuthContext from '../../../store/auth-context';
 import { api_url } from '../../../config';
+import { useNavigate } from 'react-router-dom';
 const url = api_url + "cart/add/"
 
 function ProductDetails(props) {
+    const authCtx = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [printName, setPrintName] = useState();
     const [selectedSize, setSelectedSize] = useState();
@@ -31,6 +35,10 @@ function ProductDetails(props) {
 
     const addToCart = async (e) => {
         e.preventDefault();
+
+        if(!authCtx.isLoggedIn) {
+            navigate("/login")
+        }
 
         let nameFilled = false;
         let sizeFilled = false; 
@@ -137,10 +145,18 @@ function ProductDetails(props) {
                     <div className={styles.contain}>
                         
                         {
-                            !loading && 
-                            <button className={styles.cartButton} onClick={addToCart}>
-                                Add to Cart
-                            </button>
+                            !loading && props.details.status == "allowed" && 
+                                <button className={styles.cartButton} onClick={addToCart}>
+                                    Add to Cart
+                                </button>
+                        }
+
+                        {
+                            !loading && props.details.status != "allowed" && 
+                                <button className={styles.cartButton} onClick={addToCart} disabled style={{opacity: "0.5"}}>
+                                    Unable to Add to Cart
+                                </button>
+                                
                         }
                         
                         {
