@@ -12,6 +12,13 @@
     padding-bottom: 1.5rem;
     padding-top: 0.5rem;
 }
+
+.cartMessage {
+    font-size: 30px;
+    text-align: center;
+    font-family: "montserrat";
+}
+
 .element {
     text-align: left;
     padding-top: 0.5rem;
@@ -54,6 +61,7 @@
     font-size: 22px;
     letter-spacing: 0.075em;
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 .button:hover {
     transform: scale(1.03);

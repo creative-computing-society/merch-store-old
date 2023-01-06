@@ -126,18 +126,31 @@ function Cart() {
 
                 )
             })}
-            <hr style={{
-                background: 'black',
-                color: 'black',
-                borderColor: 'white',
-                height: '0.5px',
-                width: '50%',
-                marginTop: '1rem',
-                marginBottom: '1rem'
-            }} />
-            <div className={styles.container}>
-                <Link to="/order" className={styles.button}>PLACE ORDER</Link>
-            </div>
+            
+
+            { cartItems.length == 0 &&
+                <div className={styles.cartMessage}>
+                    Your cart is empty
+                </div>
+
+            }
+
+            { cartItems.length != 0 &&
+                <>
+                    <hr style={{
+                        background: 'black',
+                        color: 'black',
+                        borderColor: 'white',
+                        height: '0.5px',
+                        width: '50%',
+                        marginTop: '1rem',
+                        marginBottom: '1rem'
+                    }} />
+                    <div className={styles.container}>
+                        <Link to="/order" className={styles.button}>PLACE ORDER</Link>
+                    </div>
+                </>
+            }
         </div>
     )
 }

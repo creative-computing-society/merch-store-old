@@ -25,7 +25,7 @@ function ChangePassword() {
             "new_password": newPassword,
         }
 
-        const res = axios.post(url, data, config)
+        const res = await axios.post(url, data, config)
 
         if (res.status == 200) {
             alert("Password Changed")
