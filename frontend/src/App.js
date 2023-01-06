@@ -10,6 +10,7 @@ import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import Order from "./pages/Order/Order";
 import Profile from "./pages/Profile/index.js"
+import ChangePassword from "./pages/ChangePassword/Index.js"
 import AuthContext from "./store/auth-context";
 import Redirect from "./pages/Redirect/Redirect";
 // import Home from "./pages/Home";
@@ -29,6 +30,7 @@ function App() {
         {authCtx.isLoggedIn && <Route path="/order" element={<Order />} />}
         {authCtx.isLoggedIn && <Route path="/redirect" element={<Redirect />} />}
         {authCtx.isLoggedIn && <Route path="/profile" element={<Profile />} />}
+        {authCtx.isLoggedIn && <Route path="/change-password" element={<ChangePassword />} />}
         {!authCtx.isLoggedIn && <Route path="*" element={<LoginPage />} />}
         {authCtx.isLoggedIn && <Route exact path="*" element={<Home />} />}
 
