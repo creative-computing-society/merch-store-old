@@ -63,7 +63,7 @@ function ProfilePage() {
   return (
     <div className={styles.container}>
       <div className={styles.contentSection}>
-        <Navbar theme={"light"}/>
+        <Navbar theme={"light"}/> 
         <hr
           style={{
             background: 'white',

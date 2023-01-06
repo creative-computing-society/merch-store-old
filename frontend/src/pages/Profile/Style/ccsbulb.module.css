@@ -20,18 +20,17 @@
 }
 
 .order {
-  /* background-color: #ffffff40; */
-  opacity: 0.7;
-  background-color: aliceblue;
+  background-color: transparent;
   padding-top: 0.6rem;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 20px;
   border-radius: 1rem;
   width: 40%;
-  /* height: 10vh; */
   text-align: center;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
+  border: 3px solid white;
+  border-radius: 1.5rem;
   padding-right: 1rem;
   margin: 0.7rem;
 }

@@ -50,7 +50,6 @@
 .button {
     padding: 1rem;
     width: 250px;
-    /* background: #36BBBD; */
     background: rgb(0, 0, 0);
     border-radius: 29px;
     border-width: 0px;
@@ -111,13 +110,10 @@
         background: #36BBBD;
         border-radius: 30px;
         border-width: 0px;
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-        font-style: normal;
         font-weight: 500;
         font-size: large;
         letter-spacing: 0.075em;
-        color: #000;
+
     }
     .button1 {
         padding-left: 0.75rem;
@@ -128,12 +124,22 @@
         background: #000000;
         border-radius: 30px;
         border-width: 0px;
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-        font-style: normal;
         font-weight: 500;
         font-size: large;
         letter-spacing: 0.05em;
         color: rgb(255, 255, 255);
+    }
+    .element {
+        text-align: left;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        border-radius: 0.7rem;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        
     }
   }

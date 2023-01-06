@@ -103,7 +103,7 @@ function Cart() {
             {cartItems.map((item) => {
             
                 return (
-                    <div className={styles.container}>
+                    <div className={styles.container}> 
                         <div key={item.product.id} className={styles.elements} >
                             <div className={styles.element}>
                             <div className={styles.btncon}>
