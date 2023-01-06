@@ -75,6 +75,16 @@ input::file-selector-button {
 input::file-selector-button:hover{
     text-decoration: underline;
 }
+.message{
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(13, 13, 13);
+    margin:auto;
+    padding-top: 5rem;
+}
+
 @media (max-width: 768px) {
 
     .paymentHeading{

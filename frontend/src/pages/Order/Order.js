@@ -90,7 +90,7 @@ function Order() {
                             <input type="file" onChange={onImageUpload} className={styles.ss} accept=".png, .jpg, jpeg" />
                         </div>
                         <br />
-                        <button onClick={sendScreenshot} className={styles.btn}>PAY</button>
+                        <button onClick={sendScreenshot} className={styles.btn}>Submit Screenshot</button>
 
                     </div>
                 </div>
