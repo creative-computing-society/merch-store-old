@@ -134,10 +134,17 @@
 
   .child {
     width: 90%;
+    padding: 0;
   }
 
   .container {
     flex-direction: column;
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  .title {
+    font-size: 24px;
   }
   .title2 {
     font-size: 18px;

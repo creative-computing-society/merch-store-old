@@ -95,7 +95,7 @@ function ProductDetails(props) {
         
         setLoading(false);
 
-        alert("product added to cart")
+        alert("Product added to cart")
     }
 
     const onSizeChange = (size) => {
