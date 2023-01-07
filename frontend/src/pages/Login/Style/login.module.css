@@ -85,6 +85,7 @@
   background: rgba(217, 217, 217, 0.28);
   border-radius: 30px;
   border-width: 0px;
+  outline: none;
 }
 
 .inputBox1:hover {
@@ -95,6 +96,7 @@
   border-width: 0px;
   transform: scale(1.06);
   transition-duration: 0.4s;
+  outline: none;
 }
 
 .inputBox1::placeholder {
@@ -173,8 +175,6 @@
     transition-duration: 0.4s;
   }
   .inputBox1:hover {
-    /* padding-left: 1rem; */
-    transform: scale(1);
-    transition-duration: 0.4s;
+    width: 250px;
   }
 }
