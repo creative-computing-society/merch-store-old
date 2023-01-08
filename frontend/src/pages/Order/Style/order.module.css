@@ -47,8 +47,8 @@
     background-color: rgb(60, 146, 53);
 }
 .qr{
-    height: 100px;
-    width:100px;
+    width: 100%;
+    max-width:400px;
 }
 .ss{
     font-family: 'Montserrat', sans-serif;
@@ -97,5 +97,9 @@ input::file-selector-button:hover{
     .subContainer{
         padding-left: 0rem;
         padding-right: 0rem;
+    }
+
+    .qr {
+        max-width: 250px;
     }
   }

@@ -83,7 +83,7 @@ function Order() {
                         <div className={styles.paymentDetails}><b>UPI ID: </b>{paymentDetails.upi_id}</div>
                         <div className={styles.paymentDetails}><b>Wallet: </b>{paymentDetails.wallet}</div>
 
-                        <img src={paymentDetails.qr_url} alt="Payment QR" className={styles.qr} />
+                        <img src={paymentDetails.qr_link} alt="Payment QR" className={styles.qr} />
 
                         <div className={styles.paymentDetails}>Upload payment Screenshot</div>
                         <div className={styles.ssContainer}>
