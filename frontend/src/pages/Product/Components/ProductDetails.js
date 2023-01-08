@@ -132,7 +132,10 @@ function ProductDetails(props) {
                 
                 { props.details.is_size_required && 
                     <div className={styles.contain}>
-                        <div className={styles.title}>Choose a Size</div>
+                        <div className={styles.sizeTitle}>
+                            <div className={styles.title}>Choose a Size</div>
+                            <a href={props.details.size_chart_url} target="_blank" className={styles.sizeChartUrl}>Size Chart</a>
+                        </div>
                         {/* <Select options={options} value={selectedSize} onChange={setSelectedSize} /> */}
                         <div className={styles.sizeButtons}>
                             <SizeButton size="S" changeSize={onSizeChange} selected={selectedSize=="S"}/>

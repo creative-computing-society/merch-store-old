@@ -101,6 +101,7 @@ function ProfilePage() {
                       )
                     })}
                      Total: {item.amount}
+                     <div>Payment verification status: {item.status}</div>
                   </div>
                 )
               })}
