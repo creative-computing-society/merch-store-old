@@ -10,7 +10,7 @@ export const AuthContextProvider = (props) => {
     const [userIsLoggedIn, setUserIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem("merch_store_token");
+        const token = localStorage.getItem("token");
 
         if (token) {
             setUserIsLoggedIn(true)
@@ -18,12 +18,12 @@ export const AuthContextProvider = (props) => {
     }, []);
 
     const loginHandler = (token) => {
-        localStorage.setItem("merch_store_token", token)
+        localStorage.setItem("token", token)
         setUserIsLoggedIn(true);
     }
 
     const logoutHandler = () => {
-        localStorage.removeItem("merch_store_token");
+        localStorage.removeItem("token");
         setUserIsLoggedIn(false);
     }
 
