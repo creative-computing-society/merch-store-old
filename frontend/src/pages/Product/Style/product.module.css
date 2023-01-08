@@ -94,8 +94,19 @@
   outline: none;
 }
 
+.sizeTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 20px;
+}
+
 .sizeButtons {
   margin-bottom: 30px;
+}
+
+.sizeChartUrl {
+  color: black;
 }
 
 
