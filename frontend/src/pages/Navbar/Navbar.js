@@ -7,7 +7,7 @@ import AuthContext from "../../store/auth-context";
 function Navbar(props) {
     const authCtx = useContext(AuthContext)
 
-    console.log(props.theme)
+    // console.log(props.theme)
 
     return (
         <div className={styles.navbar}>

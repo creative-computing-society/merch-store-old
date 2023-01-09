@@ -34,7 +34,7 @@ function Products() {
       }
       
       const data = res.data
-      console.log(data)
+      // console.log(data)
       setProducts(data.map(product => {
 
         return (

@@ -32,7 +32,7 @@ function Order() {
     }, [])
 
     const onImageUpload = (e) => {
-        console.log("image uploaded")
+        // console.log("image uploaded")
 
         if (e.target.files[0].size > 10000000) {
             alert("File size should be below 10MB!")
