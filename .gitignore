@@ -47,3 +47,6 @@ media
 
 #error logs
 logs
+
+jobs.sqlite
+
