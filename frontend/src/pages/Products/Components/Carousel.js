@@ -31,7 +31,7 @@ function Carousel() {
     const fetchData = async () => {
       const res = await axios.get(url, config)
       const data = res.data
-      console.log(data)
+      // console.log(data)
       setProducts(data.map(product => {
 
         return (
@@ -54,7 +54,7 @@ function Carousel() {
   }, [])
 
 
-  useEffect(() => {console.log(products)}, [products])
+  // useEffect(() => {console.log(products)}, [products])
 
   return (
     <Swiper

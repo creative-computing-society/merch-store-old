@@ -7,7 +7,7 @@ function Redirect(props) {
 
     useEffect(() => {
       const timeout = setTimeout(() => {
-        console.log(payment_session_id)
+        // console.log(payment_session_id)
         // window.location.replace(props.link);
       }, 3000);
   

@@ -34,7 +34,7 @@ function ProfilePage() {
 
     const fetchData = async () => {
       const res = await axios.get(user_url, config)
-      console.log(res.data)
+      // console.log(res.data)
       setUserDetails(res.data);
     }
 

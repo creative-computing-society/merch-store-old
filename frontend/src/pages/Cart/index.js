@@ -33,7 +33,7 @@ function Cart() {
         }
 
         const res = await axios.post(delete_url, data, config)
-        console.log(res.status)
+        // console.log(res.status)
         if (res.status == 200) {
             const updatedItems = cartItems.filter(item => item.id != id)
             setCartItems(updatedItems)
@@ -77,7 +77,7 @@ function Cart() {
 
         const fetchData = async () => {
             const res = await axios.get(view_url, config)
-            console.log(res.data)
+            // console.log(res.data)
             setCartItems(res.data)
 
         }

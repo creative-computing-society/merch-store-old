@@ -36,7 +36,7 @@ function Loginbox() {
           })
           .then((response) => {
             if (!response.data.error) {
-              console.log(response.data)
+              // console.log(response.data)
               authCtx.login(response.data.key)
               navigate('/', {replace: true})
 
