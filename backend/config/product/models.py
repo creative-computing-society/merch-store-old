@@ -11,7 +11,7 @@ class Product(models.Model):
     is_name_required = models.BooleanField(default=False)
     is_size_required = models.BooleanField(default=False)
     accept_orders = models.BooleanField(default=True)
-    
+    is_available = models.BooleanField(default=True)
     description = models.TextField(null=True, blank=True, default=None)
     
     for_user_positions = ArrayField(base_field=models.CharField(max_length=2), size=4, default=list, help_text="comma separated list: MB - member, CR - Core, JS - Joint Sec, GS - Gen Sec. Ex: GS,JS,CR")

@@ -17,7 +17,7 @@ class AllProductsView(APIView):
         if user.is_anonymous:
             queryset = Product.objects.all()
         else:
-            queryset = Product.objects.filter(for_user_positions__contains=[user.position])
+            queryset = Product.objects.filter(for_user_positions__contains=[user.position], is_available=True)
         serializer = ProductSerializer(queryset, many=True, context={'user': user})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -27,7 +27,7 @@ class ProductView(APIView):
     def get(self, request, product_id):
         user = request.user
         product = Product.objects.filter(id=product_id).first()
-        if product is None or user.is_authenticated and user.position not in product.for_user_positions:
+        if product is None or user.is_authenticated and user.position not in product.for_user_positions or product.is_available == False:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         serializer = ProductSerializer(product, context={'user': user})
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -40,7 +40,7 @@ class AddToCart(APIView):
         product_id = request.data.get('product_id')
         product = Product.objects.filter(id=product_id).first()
         user = request.user
-        if product is None or user.position not in product.for_user_positions or CartItem.objects.filter(user=user, product=product).exists() or OrderItem.objects.filter(product=product, order__user=user).exclude(order__is_verified=False).exists():
+        if product is None or user.position not in product.for_user_positions or CartItem.objects.filter(user=user, product=product).exists() or OrderItem.objects.filter(product=product, order__user=user).exclude(order__is_verified=False).exists() or product.is_available == False:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         printing_name = request.data.get('printing_name')
         size = request.data.get('size')
