@@ -205,8 +205,13 @@ function ProductDetails(props) {
                             className={styles.imageButton}
                             type="file"
                             onChange={onImageSelect}
-                            accept=".png, .jpg, jpeg"
+                            accept=".png"
                         />
+                        <ol className={styles.imageInstructions}>
+                            <li>Image size should be less than 15Mb</li>
+                            <li>Upload Image after removing the background using <a href='https://www.remove.bg/'>remove.bg</a></li>
+                            <li>Image should be of .png format</li>
+                        </ol>
                     </div>
                 
                 }
