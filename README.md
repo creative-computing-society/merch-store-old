@@ -27,12 +27,12 @@ Go to the project directory
   cd frontend
 ```
 
-
+Install the project dependencies
 ```bash
   npm install
 ```
 
-
+Run the start script
 ```bash
   npm start
 ```
