@@ -18,6 +18,25 @@ Clone the project
   git clone https://github.com/creative-computing-society/merch-store.git
 ```
 
+### To start the frontend server
+
+
+Go to the project directory
+
+```bash
+  cd frontend
+```
+
+Install the project dependencies
+```bash
+  npm install
+```
+
+Run the start script
+```bash
+  npm start
+```
+
 ### To start the backend server 
 
 Go to the project directory
