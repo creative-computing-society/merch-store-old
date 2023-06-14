@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['merchapi.ccstiet.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -40,18 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'login',
-    'product',
-    'order',
-    'dashboard',
-    
+
     'import_export',
     'rest_framework',
     'rest_framework.authtoken',
     'django_celery_results',
+    'corsheaders',
+
+    'login',
+    'product',
+    'order',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,6 +145,8 @@ AUTH_USER_MODEL = 'login.User'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -163,3 +168,8 @@ WALLET = config('WALLET')
 QR_LINK = config('QR_LINK')
 
 CELERY_RESULT_BACKEND = 'django-db'
+
+CORS_ALLOWED_ORIGINS = [
+    "https://merch.ccstiet.com",
+    "http://localhost:3000"
+]

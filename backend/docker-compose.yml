@@ -13,6 +13,7 @@ services:
     command: sh run.sh
     depends_on:
       - celery
+    network_mode: "host"
     restart: always
   
   celery:
@@ -21,4 +22,5 @@ services:
       context: .
       dockerfile: ./Dockerfile
     command: celery -A config worker -l info
+    network_mode: "host"
     restart: always
