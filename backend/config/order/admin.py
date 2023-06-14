@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.resources import ModelResource
 from import_export.admin import ExportMixin
-from .models import Order, OrderItem, PendingEmail
+from .models import Order, OrderItem
 
 # Register your models here.
 
@@ -33,11 +33,5 @@ class OrderItemAdmin(ExportMixin, admin.ModelAdmin):
     search_fields = ('product__name', 'order__id', 'order__user__email')
 
 
-class PendingEmailAdmin(admin.ModelAdmin):
-    list_display = ('order', )
-    search_fields = ('order', )
-
-
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
-admin.site.register(PendingEmail, PendingEmailAdmin)
