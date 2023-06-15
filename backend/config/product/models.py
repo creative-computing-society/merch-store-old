@@ -15,7 +15,7 @@ class Product(models.Model):
     is_visible = models.BooleanField(default=True)
     description = models.TextField(null=True, blank=True, default=None)
     
-    for_user_positions = ArrayField(base_field=models.CharField(max_length=2), size=4, default=list, help_text="comma separated list: MB - member, CR - Core, JS - Joint Sec, FS - Finance Sec, GS - Gen Sec. Ex: GS,FS,JS,CR")
+    for_user_positions = ArrayField(base_field=models.CharField(max_length=2), size=6, default=list, help_text="comma separated list: MB - member, CR - Core, JS - Joint Sec, FS - Finance Sec, GS - Gen Sec. Ex: GS,FS,JS,CR")
 
     image_url1 = models.URLField(max_length=5000, null=True, blank=True, default=None)
     image_url2 = models.URLField(max_length=5000, null=True, blank=True, default=None)
