@@ -27,7 +27,7 @@ def add_users(filename):
     for row in reader:
         password = ''.join(choice(string.ascii_letters) for _ in range(8))
         try:
-            user = User(name=row['name'], email=row['email'], phone_no=row['phone'], position=row['position'])
+            user = User(name=row['name'].strip(), email=row['email'].strip(), phone_no=row['phone'].strip(), position=row['position'].strip())
             user.set_password(password)
             user.save()
         except:
@@ -36,8 +36,8 @@ def add_users(filename):
             continue
         
         context = {
-            'name': row['name'],
-            'email': row['email'],
+            'name': row['name'].strip(),
+            'email': row['email'].strip(),
             'password': password
         }
         html_message = render_to_string('dashboard/email_login_credentials.html', context)
