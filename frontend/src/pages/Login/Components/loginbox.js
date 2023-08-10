@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../../../store/auth-context";
 import styles from "../Style/login.module.css";
-import logo from "../Assets/logo.png";
+import logo from "../../Home/Assets/CCS_Bulb.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ const url = api_url + "auth/login/";
 
 function Loginbox() {
   const navigate = useNavigate();
-  const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
   // const history = useHistory()
 
   const [email, setEmail] = useState("");
@@ -30,28 +30,30 @@ function Loginbox() {
       setLoading(true);
 
       try {
-        axios.post(url, {
+        axios
+          .post(url, {
             email: email.trim(),
             password: password.trim(),
           })
           .then((response) => {
             if (!response.data.error) {
               // console.log(response.data)
-              authCtx.login(response.data.key)
-              navigate('/', {replace: true})
+              authCtx.login(response.data.key);
+              navigate("/", { replace: true });
 
               setPassword("");
               setEmail("");
 
-              setLoading(false)
-          }})
+              setLoading(false);
+            }
+          })
           .catch((error) => {
-            setLoading(false)
+            setLoading(false);
 
             alert("Incorrect Credentials");
           });
       } catch (error) {
-        setLoading(false)
+        setLoading(false);
 
         alert("An error occurred");
       }
@@ -79,8 +81,10 @@ function Loginbox() {
                 placeholder="EMAIL"
                 className={styles.inputBox1}
                 value={email}
-                onChange={(e) => {setEmail(e.target.value)}}
-              /> 
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
             </div>
             <div className={styles.inputBox}>
               <input
@@ -91,24 +95,23 @@ function Loginbox() {
                 placeholder="PASSWORD"
                 className={styles.inputBox1}
                 value={password}
-                onChange={(e) => {setPassword(e.target.value)}}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
-
             <div className={styles.inputBox}>
-                {
-                    !loading && 
-                    <button type="submit" className={styles.button}>
-                        <div className={styles.buttontext}>LOGIN</div>
-                    </button>
-                }
-                
-                {
-                    loading && 
-                    <button type="submit" className={styles.button} disabled>
-                        <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
-                    </button>
-                }
+              {!loading && (
+                <button type="submit" className={styles.button}>
+                  <div className={styles.buttontext}>LOGIN</div>
+                </button>
+              )}
+
+              {loading && (
+                <button type="submit" className={styles.button} disabled>
+                  <FontAwesomeIcon icon={faSpinner} className="fa-spin" />
+                </button>
+              )}
             </div>
           </form>
         </div>

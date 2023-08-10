@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap");
 
 .logincontainer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../Assets/MerchStore_bg.png");
+  background-image: url("../../Home/Assets/MerchStore_bg.png");
   min-height: 100vh;
 }
 
@@ -17,7 +17,6 @@
   width: 200px;
   padding-left: 2rem;
   padding-top: 2rem;
-  ;
 }
 
 .contentSection {
@@ -27,12 +26,11 @@
 }
 
 .merch {
-
   font-style: normal;
 }
 
 .heading1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   margin: 0px;
   padding-bottom: 0rem;
@@ -42,11 +40,11 @@
   letter-spacing: 0.045em;
   text-transform: uppercase;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .heading2 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 98px;
@@ -55,12 +53,12 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   position: absolute;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100%;
 }
 
 .heading3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   padding-top: 110px;
   padding-bottom: 50px;
   font-style: normal;
@@ -71,7 +69,7 @@
   text-align: center;
   text-transform: uppercase;
   width: 100%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inputBox {
@@ -103,10 +101,10 @@
 .inputBox1::placeholder {
   text-align: left;
   padding-left: 2rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 100;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: medium;
   letter-spacing: 0.075em;
 }
@@ -114,7 +112,7 @@
 .button {
   padding: 1rem;
   width: 250px;
-  background: #36BBBD;
+  background: #36bbbd;
   border-radius: 30px;
   border-width: 0px;
 }
@@ -122,7 +120,7 @@
 .button:hover {
   padding: 1rem;
   width: 250px;
-  background: #36BBBD;
+  background: #36bbbd;
   border-radius: 30px;
   border-width: 0px;
   transform: scale(1.06);
@@ -131,7 +129,7 @@
 
 .buttontext {
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: large;
@@ -140,7 +138,6 @@
 }
 
 @media (max-width: 768px) {
-
   .heading2 {
     font-size: 35px;
   }
@@ -154,21 +151,20 @@
     height: 75px;
     width: 150px;
     position: "absolute";
-    text-align:"center";
+    text-align: "center";
     padding-left: 0rem;
     padding-bottom: 0rem;
-  
   }
-  .logo{
+  .logo {
     text-align: center;
   }
   .heading1 {
     font-size: 40px;
   }
-  .inputBox1{
+  .inputBox1 {
     width: 250px;
   }
-  .button{
+  .button {
     width: 200px;
   }
   .button:hover {
