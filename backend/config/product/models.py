@@ -4,6 +4,9 @@ from login.models import User
 
 # Create your models here.
 
+def productImageUploadPath(instance, filename):
+    return f"product/{instance.name.replace(' ', '_')}/{filename.replace(' ', '_')}"
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
@@ -17,10 +20,10 @@ class Product(models.Model):
     
     for_user_positions = ArrayField(base_field=models.CharField(max_length=2), size=6, default=list, help_text="comma separated list: MB - member, CR - Core, JS - Joint Sec, FS - Finance Sec, GS - Gen Sec. Ex: GS,FS,JS,CR")
 
-    image_url1 = models.URLField(max_length=5000, null=True, blank=True, default=None)
-    image_url2 = models.URLField(max_length=5000, null=True, blank=True, default=None)
+    image1 = models.ImageField(null=True, blank=True, default=None, upload_to=productImageUploadPath)
+    image2 = models.ImageField(null=True, blank=True, default=None, upload_to=productImageUploadPath)
 
-    size_chart_url = models.URLField(max_length=5000, null=True, default=None, blank=True)
+    size_chart_image = models.ImageField(null=True, default=None, blank=True, upload_to=productImageUploadPath)
     
     def __str__(self):
         return self.name

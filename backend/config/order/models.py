@@ -3,6 +3,7 @@ from django.db import models
 from product.models import Product, CartItem
 from login.models import User
 from .tasks import send_order_acceptance_email, send_order_rejection_email
+from datetime import datetime
 
 # Create your models here.
 
@@ -59,3 +60,14 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.order.id }_{self.product.name}"
+
+
+def paymentQrUploadPath(instance, filename):
+    return f"qr/{instance.amount}_{filename.replace(' ', '_')}"
+
+class PaymentQr(models.Model):
+    amount = models.CharField(unique=True, max_length=15, help_text='Make sure that amount is in floting point representation. For example, input 100.0 to represent 100')
+    image = models.ImageField(upload_to=paymentQrUploadPath)
+
+    def __set__(self):
+        return self.amount

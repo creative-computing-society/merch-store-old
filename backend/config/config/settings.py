@@ -147,7 +147,7 @@ AUTH_USER_MODEL = 'login.User'
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = 'media/'
+MEDIA_URL = config('MEDIA_URL', default='media/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGS_ROOT = os.path.join(BASE_DIR, 'logs')
@@ -165,7 +165,6 @@ EMAIL_USE_TLS = True
 
 UPI_ID = config('UPI_ID')
 WALLET = config('WALLET')
-QR_LINK = config('QR_LINK')
 
 CELERY_RESULT_BACKEND = 'django-db'
 
@@ -173,3 +172,36 @@ CORS_ALLOWED_ORIGINS = [
     "https://merch.ccstiet.com",
     "http://localhost:3000"
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/error.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'ERROR',
+        },
+        'wagtail': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    }
+}

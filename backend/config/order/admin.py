@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.resources import ModelResource
 from import_export.admin import ExportMixin
-from .models import Order, OrderItem
+from .models import Order, OrderItem, PaymentQr
 
 # Register your models here.
 
@@ -32,6 +32,9 @@ class OrderItemAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ('id', 'order', 'product', 'printing_name', 'size', 'image_url')
     search_fields = ('product__name', 'order__id', 'order__user__email')
 
+class PaymentQrAdmin(admin.ModelAdmin):
+    list_display = ('amount', 'image')
 
+admin.site.register(PaymentQr, PaymentQrAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
