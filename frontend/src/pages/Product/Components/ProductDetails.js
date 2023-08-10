@@ -133,6 +133,7 @@ function ProductDetails(props) {
 
             try{
                 const res = await axios.post(url, data, config)
+                alert("Product added to cart")
             } catch (error) {
                 alert("An error occurred")
                 setLoading(false)
@@ -148,7 +149,7 @@ function ProductDetails(props) {
         
         setLoading(false);
 
-        alert("Product added to cart")
+        
     }
 
     

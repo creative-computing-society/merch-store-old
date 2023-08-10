@@ -19,8 +19,9 @@ function Products() {
     const fetchData = async () => {
       // const res = await axios.get(url)
       let res;
-      if(authCtx.isLoggedIn) {
-        const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token")
+      if(token) {
+        // const token = localStorage.getItem("token")
 
         const config = {
           headers: {

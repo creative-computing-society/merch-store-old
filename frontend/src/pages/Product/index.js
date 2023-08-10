@@ -20,8 +20,9 @@ function Product() {
   useEffect(() => {
     const fetchData = async () => {
       let res;
-      if(authCtx.isLoggedIn) {
-        const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token")
+      if(token) {
+        // const token = localStorage.getItem("token")
 
         const config = {
           headers: {
