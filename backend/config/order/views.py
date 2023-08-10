@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from django.conf import settings
 
-from .models import Order,OrderItem
+from .models import Order,OrderItem, PaymentQr
 from product.models import CartItem
 from .serializers import OrderSerializer
 
@@ -53,12 +53,17 @@ class initiateOrder(APIView):
                 item.delete()
             else:
                 amount += float(item.product.price)
-        
+
+        qr_object = PaymentQr.objects.filter(amount=str(amount)).first()
+
+        if qr_object is None:
+            qr_object = PaymentQr.objects.filter(amount='default').first()
+
         data = {
             'amount': amount,
             'upi_id': settings.UPI_ID,
             'wallet': settings.WALLET,
-            'qr_link': settings.QR_LINK
+            'qr_link': qr_object.image.url
         }
         
         return Response(data, status=status.HTTP_200_OK)

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  api:
+    image: ccs/merch-store-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./static/:/app/static/
+      - ./logs/:/app/logs/
+      - ./media/:/app/media/
+    command: sh run.sh
+    depends_on:
+      - celery
+    network_mode: "host"
+    restart: always
+  
+  celery:
+    image: ccs/merch-store-celery
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./media/:/app/media/
+      - ./logs/:/app/logs/
+    command: celery -A config worker -l info
+    network_mode: "host"
+    restart: always

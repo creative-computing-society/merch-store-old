@@ -48,5 +48,5 @@ media
 #error logs
 logs
 
-jobs.sqlite
-
+#static folder
+backend/static

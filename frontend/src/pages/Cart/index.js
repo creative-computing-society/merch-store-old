@@ -108,7 +108,7 @@ function Cart() {
                             <div className={styles.element}>
                             <div className={styles.btncon}>
                               </div>
-                                <div className={styles.child} ><Link to={`/product/${item.product.id}`}><img src={item.product.image_url1} className={styles.productImage} /></Link></div>
+                                <div className={styles.child} ><Link to={`/product/${item.product.id}`}><img src={item.product.image1} className={styles.productImage} /></Link></div>
                                 <div className={styles.child}>
                                     <div className={styles.discription}><b>{item.product.name}</b></div>
                                     <div className={styles.discription}><b>Cost:</b> ₹{item.product.price}</div>

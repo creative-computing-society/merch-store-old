@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.resources import ModelResource
 from import_export.admin import ExportMixin
-from .models import Order, OrderItem, PendingEmail
+from .models import Order, OrderItem, PaymentQr
 
 # Register your models here.
 
@@ -13,7 +13,7 @@ class OrderAdmin(ExportMixin, admin.ModelAdmin):
     resource_class = OrderResource
 
     list_display = ('id', 'user', 'amount', 'screenshot', 'is_verified')
-    search_fields = ('id', 'user_email')
+    search_fields = ('id', 'user__email')
     list_filter = ('is_verified', )
     list_editable = ('is_verified', )
     exclude = ('cart_restored', )
@@ -32,12 +32,9 @@ class OrderItemAdmin(ExportMixin, admin.ModelAdmin):
     list_display = ('id', 'order', 'product', 'printing_name', 'size', 'image_url')
     search_fields = ('product__name', 'order__id', 'order__user__email')
 
+class PaymentQrAdmin(admin.ModelAdmin):
+    list_display = ('amount', 'image')
 
-class PendingEmailAdmin(admin.ModelAdmin):
-    list_display = ('order', )
-    search_fields = ('order', )
-
-
+admin.site.register(PaymentQr, PaymentQrAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
-admin.site.register(PendingEmail, PendingEmailAdmin)

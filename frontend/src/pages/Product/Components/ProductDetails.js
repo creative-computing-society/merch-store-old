@@ -161,7 +161,7 @@ function ProductDetails(props) {
         <div className={styles.container}>
 
             <div className={styles.child}>
-                <ProductCarousel image_url1={props.details.image_url1} image_url2={props.details.image_url2}/>
+                <ProductCarousel image_url1={props.details.image1} image_url2={props.details.image2}/>
             </div>
             <div className={styles.child}>
                 {/* <hr/>    */}
@@ -186,7 +186,7 @@ function ProductDetails(props) {
                     <div className={styles.contain}>
                         <div className={styles.sizeTitle}>
                             <div className={styles.title}>Choose a Size</div>
-                            <a href={props.details.size_chart_url} target="_blank" className={styles.sizeChartUrl}>Size Chart</a>
+                            <a href={props.details.size_chart_image} target="_blank" className={styles.sizeChartUrl}>Size Chart</a>
                         </div>
                         {/* <Select options={options} value={selectedSize} onChange={setSelectedSize} /> */}
                         <div className={styles.sizeButtons}>

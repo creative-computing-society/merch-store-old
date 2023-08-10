@@ -8,6 +8,7 @@ USER_POSITION_CHOICES = [
     ('MB','Member'),
     ('CR','Core'),
     ('JS','Joint Secretary'),
+    ('FS','Finance Secretary'),
     ('GS','General Secretary'),
 ]
 

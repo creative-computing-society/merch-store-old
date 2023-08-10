@@ -1,20 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404, StreamingHttpResponse, HttpResponseBadRequest, FileResponse, HttpResponse
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files.storage import default_storage
 from django.views.decorators.http import require_POST
-from django.core.mail import EmailMessage, EmailMultiAlternatives
-from django.core import mail
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
+from django.contrib import messages
 
 from order.models import Order, OrderItem
-from product.models import Product
-from login.models import User
+from product.models import Product, CartItem
 
-import csv, string, random, os
+from .tasks import add_users
+
+import csv
 from datetime import datetime
+
 
 class ListItem:
     def __init__(self, id, name, price, orders_count):
@@ -22,6 +20,7 @@ class ListItem:
         self.name = name
         self.price = price
         self.orders_count = orders_count
+
 
 # Create your views here.
 
@@ -55,6 +54,7 @@ def dashboard(request):
         'productsCount': len(items)
     }
     return render(request, 'dashboard/dashboard.html', context=context)
+
 
 class Echo:
     def write(self, value):
@@ -95,8 +95,8 @@ def ordersCSV(request, id):
         headers = {'Content-Disposition': f'attachment; filename="{product.name}_orders.csv"'}
     )
 
-email_subject = 'User Credentials for CCS Merchandise Store'
 
+@staff_member_required
 @require_POST
 def importUsers(request):
     file = request.FILES.get('file')
@@ -104,39 +104,20 @@ def importUsers(request):
     if filename.split('.')[-1]!='csv':
         return HttpResponseBadRequest()
     filename = default_storage.save(filename, file)
-    filename = os.path.join(settings.MEDIA_ROOT, filename)
-    connection = mail.get_connection(fail_silently=False)
-    connection.open()
-    passwordfile_path = os.path.join(settings.MEDIA_ROOT, 'passwords.csv')
-    userfile = open(filename, 'r', newline='', encoding='utf-8-sig')
-    passwordfile = open(passwordfile_path, 'a', newline='')
-    reader = csv.reader(userfile)
-    writer = csv.writer(passwordfile)
-    writer.writerow(['','','','',''])
-    for row in reader:
-        password = ''.join(random.choice(string.ascii_letters) for _ in range(8))
-        row.append(password)
-        writer.writerow(row)
-        try:
-            user = User(name=row[0], email=row[1], phone_no=row[2], position=row[3])
-            user.set_password(password)
-            user.save()
-        except:
-            userfile.close()
-            passwordfile.close()
-            connection.close()
-            return HttpResponse(f"error in {row[0]}, {row[1]}. All previous entries created successfully.")
-        context = {
-            'name': row[0],
-            'email': row[1],
-            'password': password
-        }
-        html_message = render_to_string('dashboard/email_login_credentials.html', context)
-        msg = strip_tags(html_message)
-        email = EmailMultiAlternatives(email_subject, msg, settings.EMAIL_HOST_USER, (row[1],), reply_to=('ccs@thapar.edu',))
-        email.attach_alternative(html_message, 'text/html')
-        connection.send_messages((email,))
-    userfile.close()
-    passwordfile.close()
-    connection.close()
-    return FileResponse(open(passwordfile_path, 'rb'))
+    add_users.delay(filename)
+    messages.success(request, 'File uploaded, check status at Teak Results table from admin panel.')
+    return redirect('/dashboard')
+
+
+@staff_member_required
+@require_POST
+def stopOrders(request):
+    products = Product.objects.all()
+    for product in products:
+        product.accept_orders = False
+        product.save()
+    cart_items = CartItem.objects.all()
+    for cart_item in cart_items:
+        cart_item.delete()
+    messages.success(request, 'Stopped receiving orders and cleared all carts')
+    return redirect('/dashboard')
