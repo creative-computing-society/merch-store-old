@@ -40,7 +40,7 @@ function Products() {
         return (
           <div className={styles.product}>
             <Link to={`/product/${product.id}`}>
-                <div><img src={product.image_url1} alt={product.name} className={styles.carouselImage} /></div>
+                <div><img src={product.image1} alt={product.name} className={styles.carouselImage} /></div>
             </Link>
             <div className={styles.productName}>
             <div ><b>{product.name}</b></div>
