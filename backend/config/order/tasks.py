@@ -21,7 +21,7 @@ def send_order_acceptance_email(order_id, order_amount, products, user_name, use
     html_message = render_to_string('dashboard/email_order_success.html', context)
     msg = strip_tags(html_message)
     send_mail(subject, msg, settings.EMAIL_HOST_USER, (user_email, ), html_message=html_message, fail_silently=False)
-    return 1
+    return f"Order acceptance mail sent to {user_email}"
 
 
 @app.task(name='send_order_rejection_email')
@@ -35,4 +35,4 @@ def send_order_rejection_email(order_id, user_name, user_email):
     html_message = render_to_string('dashboard/email_order_failed.html', context=context)
     msg = strip_tags(html_message)
     send_mail(subject, msg, settings.EMAIL_HOST_USER, (user_email, ), html_message=html_message, fail_silently=False)
-    return 1
+    return f"Order rejection mail sent to {user_email}"
