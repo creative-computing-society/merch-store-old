@@ -14,10 +14,7 @@ class AllProductsView(APIView):
 
     def get(self, request):
         user = request.user
-        if user.is_anonymous:
-            queryset = Product.objects.filter(is_visible=True).all()
-        else:
-            queryset = Product.objects.filter(for_user_positions__contains=[user.position], is_visible=True)
+        queryset = Product.objects.filter(for_user_positions__contains=('MB' if user.is_anonymous else user.position, ), is_visible=True)
         serializer = ProductSerializer(queryset, many=True, context={'user': user})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
