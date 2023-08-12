@@ -24,7 +24,7 @@ def add_users(filename):
     userfile = open(filename, 'r', newline='', encoding='utf-8-sig')
     reader = csv.DictReader(userfile)
 
-    sucessCnt = 0
+    successCnt = 0
     failureCnt = 0
     
     for row in reader:
@@ -54,4 +54,4 @@ def add_users(filename):
         connection.send_messages((email,))
     
     connection.close()
-    return f"{sucessCnt} users successfully created and {failureCnt} failed."
+    return f"{successCnt} users successfully created and {failureCnt} failed."
