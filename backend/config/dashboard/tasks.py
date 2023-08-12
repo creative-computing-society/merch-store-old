@@ -23,6 +23,9 @@ def add_users(filename):
     
     userfile = open(filename, 'r', newline='', encoding='utf-8-sig')
     reader = csv.DictReader(userfile)
+
+    successCnt = 0
+    failureCnt = 0
     
     for row in reader:
         password = ''.join(choice(string.ascii_letters) for _ in range(8))
@@ -30,9 +33,11 @@ def add_users(filename):
             user = User(name=row['name'].strip(), email=row['email'].strip(), phone_no=row['phone'].strip(), position=row['position'].strip())
             user.set_password(password)
             user.save()
+            successCnt += 1
         except:
             with open(os.path.join(settings.LOGS_ROOT, 'add_user_errors.log'), 'a') as f:
                 f.write(f"creation of ({row['name']}, {row['email']}, {row['phone']}) unsuccessful.\n")
+            failureCnt += 1
             continue
         
         context = {
@@ -49,4 +54,4 @@ def add_users(filename):
         connection.send_messages((email,))
     
     connection.close()
-    return 1
+    return f"{successCnt} users successfully created and {failureCnt} failed."
