@@ -13,6 +13,7 @@ import Profile from "./pages/Profile/index.js"
 import ChangePassword from "./pages/ChangePassword/Index.js"
 import AuthContext from "./store/auth-context";
 import Redirect from "./pages/Redirect/Redirect";
+import AuthVerify from "./pages/Login/AuthVerify.js";
 // import Home from "./pages/Home";
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
     <div className="App">
     <Router>
       <Routes>
-        {!authCtx.isLoggedIn && <Route path="/login" element={<LoginPage />} />}
+      {!authCtx.isLoggedIn && <Route path="/login" element={<LoginPage />} />}
+      {!authCtx.isLoggedIn && <Route path="/authVerify" element={<AuthVerify />} />}
         {<Route exact path="/" element={<Home />} />}
         {/* {authCtx.isLoggedIn && <Route path="/products" element={<Products />} />} */}
         {<Route path="/product/:id" element={<Product />} />}
