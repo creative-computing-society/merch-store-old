@@ -61,6 +61,8 @@ function Loginbox() {
       alert("Please fill in all the data");
     }
   };
+
+  
   return (
     <div className={styles.logincontainer} id="whyccsid">
       <div className={styles.contentSection}>
@@ -114,6 +116,13 @@ function Loginbox() {
               )}
             </div>
           </form>
+
+          <center>
+            <button onClick={ () => window.location.replace("https://sso.ccstiet.com/auth/google/?clientId=6511c0315c333911e2fb2213&callback=http://localhost:3000/authVerify")} className={styles.button} style={{backgroundColor:"darkgoldenrod"}}>
+              <div style={{fontWeight:"bold",fontFamily:"monospace"}}>SIGN IN WITH CCS</div>
+            </button>
+          </center>
+
         </div>
         <div className={styles.merch}>
           <Fade bottom>
